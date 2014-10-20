@@ -1,0 +1,149 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{definition}{Definition}
+\newtheorem*{prop}{Proposition}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{lemma}{Lemma}
+
+\usepackage{graphicx}
+\usepackage{enumerate}
+%\usepackage{setspace}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.markings}
+\usepackage{pgfplots}
+%\doublespacing
+%\usepackage{fullpage}
+
+\def\B{{\mathbb B}}
+\def\C{{\mathbb C}}
+\def\D{{\mathbb D}}
+\def\H{{\mathbb H}}
+\def\M{{\mathbb M}}
+\def\N{{\mathbb N}}
+\def\0{{\mathbb 0}}
+\def\P{{{\mathbb P}}}
+\def\Q{{\mathbb Q}}
+\def\R{{\mathbb R}}
+\def\T{{\mathbb T}}
+\def\Z{{\mathbb Z}}
+
+
+\begin{document}
+\title{14.121: Exam Notes}
+\date{\today}
+\author{Samuel Isaac Grondahl}
+\maketitle
+
+
+\section{Utility and Revealed Preferences}
+\label{sec:util-reve-pref}
+
+\input{./examnotes/preferences.tex}
+
+
+\newpage
+\section{Demand Theory}
+\label{sec:demand-theory}
+
+\subsection{Consumer's Problem}
+\label{sec:consumers-problem}
+
+World has $L$ goods, with $X \in R^L_+$ the set of possible
+consumption vectors. The corresponding price vector $p \in
+R^L_{++}$. The budget set for a consumer with wealth $w$ is 
+\[
+B_{p,w} = \{ x \in X | p \cdot x \leq w \}
+\]
+
+\subsection{Utility Maximization Problem}
+\label{sec:util-maxim-probl}
+
+\input{./examnotes/ump.tex}
+
+
+\subsection{Expenditure Minimization Problem}
+\label{sec:expend-minim-probl}
+
+\input{./examnotes/emp.tex}
+
+\subsection{EMP-UMP Duality}
+\label{sec:emp-ump-duality}
+
+\input{./examnotes/empumpduality.tex}
+
+\newpage
+
+\section{Applied Consumer Theory}
+\label{sec:appl-cons-theory}
+
+\input{./examnotes/appliedconsumer.tex}
+
+
+\newpage
+
+\section{Estimating Demand}
+\label{sec:estimating-demand}
+
+No notes here. Lecture was somewhat all over the place and nothing
+showed up on a problem set. Come back to this, time permitting.
+
+\section{Monotone Methods}
+\label{sec:monotone-methods}
+
+\input{./examnotes/monotone.tex}
+
+\section{Monopoly}
+\label{sec:monopoly}
+
+\input{./examnotes/monopoly.tex}
+
+\section{Externalities}
+\label{sec:externalities}
+
+\input{./examnotes/externalities.tex}
+
+\section{General Equilibrium: Main Issues}
+\label{sec:main-issues}
+
+\input{./examnotes/gemain.tex}
+
+\section{GE: Existence and Other Properties}
+\label{sec:exist-other-prop}
+
+\input{./examnotes/geexist.tex}
+
+\section{GE: Microfoundations}
+\label{sec:microfoundations}
+
+\input{./examnotes/gemicro.tex}
+
+\newpage
+\appendix
+\section{Mathematical Definitions}
+\label{sec:math-defin}
+
+\input{./examnotes/mathdefs.tex} 
+
+\newpage
+\section{Optimization}
+\label{sec:optimization}
+
+** TODO: add in proofs here!! at least at the level presented in first
+lecture. In general, go back through lecture slides to see what we
+proved in class and have those typed up **
+
+\input{./examnotes/optimization.tex}
+
+\end{document}
+
+
+
+
+
+

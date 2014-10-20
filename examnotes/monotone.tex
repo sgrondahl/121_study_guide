@@ -1,0 +1,236 @@
+
+
+\subsection{Motivation}
+\label{sec:motivation}
+
+We are now concerned with comparative statics, that is, given some
+maximization problem
+\[
+\max_{x} f(x; \theta)
+\]
+we want to know both how the maximum value ($v$) and the maximizing
+argument ($x$) depend upon $\theta$. Assuming all derivatives exist
+and the solution is interior and unique (which we could get, e.g. if
+$f$ is ${\cal C}^2$, and strictly convex), we can apply the implicit
+function theorem since the maximizer uniquely solves
+\[
+f_x(x(\theta), \theta) = 0
+\]
+and we can say locally that
+\[
+\frac{\partial x(\theta)}{\partial \theta}
+= - \frac{f_{x\theta}(x(\theta), \theta)}{f_{xx}(x(\theta),\theta)}
+\]
+but this breaks down if any of the above assumptions fails
+(e.g. differentiability, convexity), and we want our analysis to be
+robust to specifications that might give a different $f$. This
+introduces the idea of ``Robust Comparative Statics'' which seek to
+avoid calculus and find conditions which can be used even if functions
+are nondifferentiable, discontinuous, or even defined on discrete
+state spaces.
+
+\subsection{Preliminaries}
+\label{sec:preliminaries}
+
+\begin{definition}[Partial Order]
+  A relation $R$ that satisfies transitivity, reflexivity, and
+  antisymmetry is called a partial order.
+\end{definition}
+
+\begin{definition}[Partially Ordered Set]
+  A partially ordered set, or poset, is a partial order relation
+  together with a set, $(X, R)$. Note that a poset does not require
+  completeness.
+\end{definition}
+
+\begin{definition}[Meet]
+  The meet operator is defined as follows:
+  \[
+  x \wedge y = \max\{z | xRz, yRz\}
+  \]
+\end{definition}
+
+\begin{definition}[Join]
+  The join operator is defined as follows:
+  \[
+  x \vee y = \min\{z | zRx, zRy\}
+  \]
+\end{definition}
+
+\begin{definition}[Lattice]
+  A lattice is a poset that is closed under meet and join operations.
+\end{definition}
+
+\begin{definition}[Strong Set Order]
+  The strong set order is given by the binary relation
+  \[
+  A \succeq_S B \iff
+  a \vee b \in A, \quad
+  a \wedge b \in B, \quad
+  \forall a \in A, \forall b \in B
+  \]
+\end{definition}
+
+\begin{definition}[Increasing Differences]
+  Let $f$ be a function $f : X \times \Theta \to \R$ where both $X$
+  and $\Theta$ are lattices. Consider $x^H, x^L \in X$, and $\theta^H,
+  \theta^L \in \Theta$ with $x^H \geq_X x^L$ and $\theta^H \geq_\Theta
+  \theta^L$. Then $f$ has increasing differences if
+  \[
+  f(x^H, \theta^H) - f(x^L, \theta^H) \geq
+  f(x^H, \theta^L) - f(x^L, \theta^L)
+  \]
+  this is the same as saying that the difference $f(x^H, \theta) -
+  f(x^L, \theta)$ is weakly increasing in $\theta$.
+\end{definition}
+
+\begin{definition}[Supermodularity]
+  Let $f$ be a function $f : X \to \R$ where $X$ is a lattice. Then
+  $f$ is supermodular if
+  \[
+  f(x^H \vee x^L) + f(x^H \wedge x^L) \geq f(x^H) + f(x^L) \quad
+  \forall x^H, x^L \in X
+  \]
+\end{definition}
+
+Note: see the proofs we did regarding supermodularity on the problem
+set! Those are especially useful here.
+
+\subsection{Topkis}
+\label{sec:topkis}
+
+\begin{theorem}[Topkis Monotonicity Theorem]
+  Consider an optimization problem of the form
+  \[
+  \max_{x} f(x, \theta)
+  \]
+  and let $x^*(\theta)$ be the maximizer correspondence. If $f(x,
+  \theta)$ has increasing differences, then $x^*(\theta)$ is ewakly
+  increasing in $\theta$.
+\end{theorem}
+
+\begin{prop}
+  Define
+  \[
+  x^{**}(\theta) = \sup\{ \arg \max_x f(x,\theta) + g(x) \}
+  \]
+  Then $x^{**}(\theta)$ is weakly increasing in $\theta$ \textbf{for
+    all $g$} if and only if $f$ has increasing differences.
+\end{prop}
+
+\begin{theorem}[Topkis]
+  Consider an optimization problem of the form
+  \[
+  \max_{x \in D} f(x, \theta)
+  \]
+  where $D$ is a lattice (with order $\succeq_X$) and does not depend
+  on $\theta$. If $f$ exhibits increasing diferences in $(x,\theta)$
+  relative to $(\succeq_X, \succeq_\Theta)$ and is supermodular in $x$
+  (relative to $\succeq_X$), then the optimal choice correspondence
+  $x^*(\theta)$ will be increasing in the strong set order relative to
+  $\succeq_X$ (where an increase in the parameter is relative to
+  $\succeq_\Theta$).
+
+  Under the above conditions, we can conclude that $\forall \theta,
+  \theta' \in \Theta$ with $\theta' \succeq_\Theta \theta$ and
+  $\forall x \in x^*(\theta), x' \in x^*(\theta')$,
+  \[
+  x \wedge x' \in x^*(\theta) \quad \text{and} \quad x \vee x' \in x^*(\theta')
+  \]
+\end{theorem}
+
+
+\subsection{Milgrom-Shannon}
+\label{sec:milgrom-shannon}
+
+\begin{definition}[Single Crossing]
+  A function $f: \R^2 \to \R$ is single crossing in $(x, \theta)$ if
+  $\forall x' > x$ and $\theta' > \theta$,
+  \begin{enumerate}[(i)]
+  \item $f(x', \theta) - f(x, \theta) \geq 0 \implies f(x', \theta') -
+    f(x, \theta') \geq 0$
+  \item $f(x', \theta) - f(x, \theta) > 0 \implies f(x', \theta') -
+    f(x, \theta') > 0$
+  \end{enumerate}
+
+  We say the single crossing is strict if $f(x', \theta) - f(x,
+  \theta) \geq 0 \implies f(x', \theta') - f(x, \theta') > 0$.
+\end{definition}
+
+Note that unlike increasing differences, this condition is not
+symmetric in the variables $(x, \theta)$.
+
+\begin{prop}
+  If $f$ has increasing differences then it is also single crossing,
+  but the converse is not true.
+\end{prop}
+
+\begin{prop}[Milgrom-Shannon Monotonic Selection Theorem]
+  Define
+  \[
+  x^*(\theta, \bar X) := \arg \max_{x \in X} f(x, \theta)
+  \]
+  If $f$ is single-crossing in $(x, \theta)$, then $x^*(\theta, \bar
+  X)$ is weakly increasing in $\theta \; \forall \bar X \subset X$.
+
+  Moreover, if $x^*(\theta, \bar X)$ is non-decreasing in $\theta$ for
+  all finite sets $\bar X \subset \R$, then $f$ is single-crossing in
+  $(x, \theta)$.
+\end{prop}
+
+The usefulness of the Monotonic Selection theorem is that we can make
+a statement about comparative statics that is robust to arbitrarily
+selecting/restricting the feasible set $\bar X \subset X$.
+
+\subsection{Long Run versis Short Run Response}
+\label{sec:LR-SR}
+
+Samuelson suggested that a firm would react more to input price
+changes in the long-run than in the short-run because it has more
+inputs it can adjust. We take the ``short run'' to be the period when
+$k$ is effectively fixed, whereas the ``long run'' allows $k$ to
+vary. We can be more precise about this relationship, though.
+
+\begin{prop}[Milgrom and Roberts]
+  Suppose $X, Y = \R$ and define
+  \[
+  x(y, t) := \arg \max_{x \in X} F(x,y,t)
+  \]
+  and
+  \[
+  y(t) := \arg \max_{y \in Y} F(x(y, t), y, t)
+  \]
+  Suppose further that $F: X \times Y \times \R \to \R$ is
+  supermodular, that $t, t' \in \R $ with $t' \geq t$, and that the
+  maximizes described below are unique for parameter values $t$ and
+  $t'$. Then
+  \[
+  x(y(t'), t') \geq x(y(t), t') \geq x(y(t), t)
+  \]
+  and
+  \[
+  x(y(t'), t') \geq x(y(t'), t) \geq x(y(t), t)
+  \]
+\end{prop}
+
+The above may be useful to characterize long run response. For
+instance, if $x$ and $y$ happen to be complements, then the objective
+would be supermodular in $x$ and $y$ and the above would characterize
+growth paths.
+
+\begin{prop}[LeChatelier Principle]
+  If production is $f(k,l)$ and wage $w > w_0$ increases, and if $k$
+  and $l$ are always complements or always substitutes, then
+  \[
+  l_{LR}(w) \leq l_{SR}(w_0, w) \leq l_{LR}(w_0)
+  \]
+\end{prop}
+
+Note that when we have always complements or always substitutes, we
+get supermodularity, and we can apply Milgrom-Roberts, which gives the
+result.
+
+Note also that the above does not apply when we have sometimes complements
+and sometimes substitutes, which would likely be the case in many
+applications. For instance, perhaps capital is a complement to labor
+when labor is abundant but a substitute when labor is scarce.

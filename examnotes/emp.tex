@@ -1,0 +1,139 @@
+
+
+\begin{definition}[EMP]
+  The consumer's expenditure minimization problem (EMP) is
+  \[
+  min_{x \in X} p \cdot x \quad s.t. \quad u(x) \geq u_0
+  \]
+\end{definition}
+
+\begin{prop}[UMP-EMP Duality]
+  Suppose $u(x)$ is a continuous utility function satisfying local
+  nonsatiation and $p >> 0$, then
+  \begin{enumerate}[(a)]
+  \item If $x^*$ is a solution to the UMP with wealth $w$, then $x^*$
+    is a solution to the EMP with utility $u(x^*)$
+  \item if $x^*$ is a solution to the EMP with utility $u_0$, then
+    $x^*$ is a solution to the UMP with wealth $p \cdot x^*$.
+  \end{enumerate}
+\end{prop}
+
+\begin{definition}[Expenditure Function]
+  The expenditure function $e : X \times \R \to \R$ is defined by
+  \[
+  e(p, u) = \min_{x \in X: u(x) \geq u} p \cdot x
+  \]
+\end{definition}
+
+\begin{definition}[Hicksian Demand]
+  The Hicksian demand correspodnence $h : X \times \R \to X$ is
+  defined by 
+  \[
+  h(p,u) = \{ z \in X | p \cdot z = e(p,u) \text{and} u(z) \geq u \}
+  \]
+  which yields the FOCs
+  \[
+  p_i  = \lambda \frac{\partial u(h(p,u))}{\partial x_i} 
+  \quad \text{if} \quad  h_i(p,u) > 0
+  \]
+  and
+  \[
+  p_i  \geq \lambda \frac{\partial u(h(p,u))}{\partial x_i} 
+  \quad \text{if} \quad h_i(p,u) = 0
+  \]
+\end{definition}
+
+Note that $e(p,u) = p \cdot z \quad \forall z \in h(p,u)$. The
+Hicksian demand is often called compensated demand since
+\[
+h(p,u) = x(p, e(p,u))
+\]
+that is, the Hicksian answers, ``how would demand change if we changed
+prices and also gave wealth compensation so utility level is
+unchanged?''
+
+
+\begin{prop}
+  Suppose $u$ is a continuous utility function satisfying local
+  nonsatiation. Then the expenditure function $e(p,u)$ is
+  \begin{enumerate}[(a)]
+  \item Homogenous of degree $1$ in $p$, i.e. $e(\alpha p, u) = \alpha
+    e(p,u)$
+  \item strictly increasing in $u$ and nondecreasing in each $p_i$
+  \item concave in $p$
+  \item continuous in $p$ and $u$
+  \end{enumerate}
+\end{prop}
+
+\begin{prop}
+  Suppose $u$ is a continuous utility function satisfying local
+  nonsatiation. Then the Hicksian demand correspondence $h(p,u)$ is
+  \begin{enumerate}[(a)]
+  \item Homogenous of degree $0$ in $p$, i.e. $h(\alpha p, u) = h(p,
+    u), \forall \alpha, p, u$
+  \item no excess utility property: $u(x) = u \forall x \in h(p,u)$
+  \item If $u$ is strictly quasi-concave, then $h(p,u)$ is a function
+  \end{enumerate}
+\end{prop}
+
+\begin{prop}[Compensated Law of Demand]
+  Suppose $u$ is a continuous, strictly quasiconcave utility function
+  satisfying local nonsatiation, then $\forall p', p''$,
+  \[
+  (p'' - p') \cdot [h(p'', u_0) - h(p', u_0)] \leq 0
+  \]
+  that is, the weighted average of price and demand movements (the dot
+  product) is negative, i.e. demand goes down for products that have
+  gone up in price.
+\end{prop}
+
+\begin{corollary}
+  If $p_i$ increases and all otehr goods' prices are unchanged, then
+  the Hicksian demand for good $i$ weakly decreases.
+\end{corollary}
+
+\begin{prop}
+  Suppose $u$ is a continuous, strictly quasiconcave utility function 
+  satisfying local nonsatiation. Then for $i = 1, 2, \dots, L$, we have
+  \[
+  h_i(p,u) = \frac{\partial}{\partial p_i} e(p,u)
+  \]
+  As a corollary, if we differentiate once more we get cross partials,
+  which must be equal, that is, provided $h$ is continuously
+  differentiable:
+  \[
+  \frac{\partial h_i}{\partial p_j} = \frac{\partial h_j}{\partial p_i}
+  \]
+\end{prop}
+
+\begin{definition}[Slutsky Matrix]
+  The Slutsky substitution matrix $S(p, w)$ is the $L \times L$ matrix with
+  \[
+  s_{ij} = \frac{\partial x_i}{\partial p_j} + \frac{\partial x_i}{\partial w} x_j
+  \]
+  which describes the change in the demand $x_j$ resulting from
+  changing $p_j$ and giving the consumer extra wealth $x_j
+  \cdot \partial p_j$ to make the old bundle affordable.
+
+  As a corollary, the Slutsky substitution matrix is symmetric and
+  negative semi-definite. It is derived from $S(p,u) = D_ph(p,u) =
+  D^2_pe(p,u)$, which is where the symmetry comes from.
+\end{definition}
+
+
+\begin{prop}[Slutsky Equation]
+  Suppose $u$ is a continuous, locally nonsatiated, and strictly
+  quasiconcave utility function, and let $w := e(p, u_0)$, then
+  \[
+  \frac{\partial h_i (p, u_0)}{\partial p_j}
+  = \frac{\partial x_i(p,w)}{\partial p_j}
+  + \frac{\partial x_i(p,w)}{\partial w} x_j(p,w) 
+  = s_{ij}
+  \]
+  which, after rearranging, gives
+  \[
+  \frac{\partial x_i(p,w)}{\partial p_j} 
+  = \underbrace{\frac{\partial h_i (p, u_0)}{\partial p_j}}_{\text{price effect}}
+  - \underbrace{\frac{\partial x_i(p,w)}{\partial w} x_j(p,w)}_{\text{income effect}}
+  \]
+\end{prop}

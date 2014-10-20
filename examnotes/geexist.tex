@@ -1,0 +1,300 @@
+
+
+\subsection{Existence of Walrasian Equilibrium}
+\label{sec:exist-walr-equil}
+
+We begin with a few preliminaries
+
+\begin{theorem}[Brouwer Fixed Point]
+  Suppoes $A \subset \R^L$ is nonempty, convex, compact, and $f: A \to
+  A$ is continuous. Then $f$ has a fixed point:
+  \[
+  \exists x^* \in A \; : \; f(x^*) = x^*
+  \]
+\end{theorem}
+
+\begin{theorem}[Kakutani Fixed Point]
+  Suppose $A \subset \R^L$ is nonempty, compact, convex, and $f : A
+  \to A$ is a non-empty, convex-valued, upper hemi-continuous
+  correspondence. Then $f$ has a fixed point:
+  \[
+  \exists x^* \in A \; : \; x^* \in f(x^*)
+  \]
+\end{theorem}
+
+\begin{proof}
+  What we really want to do is to find a continuous function $g$ that
+  falls inside of $f$ and then apply Brouwer, but unfortunately we
+  can't do this in general. Instead, for each $n \in \N$, find a
+  continuous function $g_n$ whose graph is everywhere within
+  $\frac{1}{n}$ of $f$. 
+
+  For each such function $g_n$, we can, by Brouwer, find fixed point
+  $(a_n^*, a_n^*)$ in the graph of $g_n$. Thus $\exists (x_n, y_n)$ in
+  the graph of $f$ such that
+  \[
+  |a_n^* - x_n| < \frac{1}{n} \quad \text{and} \quad |a_n^* - y_n| < \frac{1}{n}
+  \]
+
+  Since $A$ is compact, $\exists$ convergent subsequence $a^*_{n_k}
+  \to a^*$ for some $a^* \in A$, hence both $x_{n_k}$ and $y_{n_k}$
+  also converge to $a^*$. And since the sequence $(x_{n_k}, y_{n_k})$
+  is in the graph of $f$ and $f$ is UHC it must be the case that the
+  limit point $(a^*, a^*)$ is also in the graph of $f$, hence $a^* \in
+  f(a^*)$.
+\end{proof}
+
+
+\begin{definition}[Excess Demand]
+  The excess demand of consumer $i$ at prices $p$ is
+  \[
+  z^I(p) = x^i(p, p \cdot \omega^i) - \omega^i
+  \]
+\end{definition}
+
+\begin{definition}[Aggregate Excess Demand]
+  The aggregate excess demand at prices $p$ is
+  \[
+  z(p) = \sum_i z^i(p)
+  \]
+\end{definition}
+
+\begin{prop}
+  A price vector $p$ satisfies $z(p) = 0$ if and only if $(p,
+  \{x^i\}_{i \in I})$ is a Walrasian equilibrium.
+\end{prop}
+
+Thus our goal to establish existsnce will be to show that a solution
+to $z(p) = 0$ exists.
+
+In order to simplify our study, we study prices on the simplex (since
+only relative prices matter), i.e. prices sum to $1$. We denote these
+prices on the simplex as $\Delta$ (when prices are nonnegative) or
+$\Delta^0$ (when prices are strictly positive).
+
+
+We continue to use the four assumptions from section
+\ref{sec:four-assumptions}, but strengthen the monotonicity
+condition. For simplicity, they are repeated below (with strong
+monotonicity added). For each agent $i$,
+\begin{enumerate}
+\item $u^i$ is continuous
+\item $u^i$ is strongly monotone in $x$ (i.e. incrementing
+  \textit{any} element of $x$ increases $u$)
+\item $u^i$ is concave
+\item $\omega^i >> 0$
+\end{enumerate}
+
+The reason we add strong monotonicity is so consumers strictly value
+increases in any single commodity, thus market clearing will be
+exact. If we didn't add this, we could have all consumers value only a
+single commodity which would permit many equilibria (because nobody
+cares about the other commodities).
+
+\begin{prop}
+  In an exchange economy, if preferences satisfy our four assumptions
+  and are strongly monotone, then $z(p)$ defined for $p \in \Delta^0$
+  satisfies:
+  \begin{enumerate}[(i)]
+  \item $z$ is a continuoous function (we use this to establish that
+    it must cross $0$ in the later proof of existence)
+  \item homogeneity of degree $0$ (i.e. we can arbitrarily normalize
+    prices)
+  \item Walras' law: $p \cdot z(p) = 0 \; \forall p$
+  \item bounded below: $z(p) \geq - \bar \omega$
+  \item boundary condition: a sequence $p^n$ of prices that converges
+    to a limit $p$ with some nonzero entries and at least one zero
+    entry will have
+    \[
+    \lim_{n \to \infty} \max\{ z_1(p^n), \dots, z_L(p^n)\} = \infty
+    \]
+    that is, under the above prices, at least one consumer will have
+    strictly positive wealth, and given the strongly monotone
+    preferences, this consumer will consume unboundedly higher levels
+    of at least one of the goods whose price is going to zero (if more
+    than one are going to zero, the demands for all need not go to
+    $+\infty$!)
+  \end{enumerate}
+
+\end{prop}
+
+We use the proposition in the following way to prove existence (what
+follows is just a rough sketch, though). For simplicity, we consider a
+$2$ commodity market.
+\begin{enumerate}
+\item Homogeneity of degree $0$ allows us to normalize $p_2 = 1$ and
+  consider only $p = p_1$.
+\item Walras' Law allows us to check market clearning in $L-1$ markets
+  (since the final market must then clear). Hence in our case we look
+  only at the parket for good $1$ and consider solutions to the single
+  equation $z_1(p, 1) = 0$.
+\item We then try to establish two different prices $p$ such that
+  $z_1(p, 1) > 0$ and $z_1(p, 1) < 0$:
+  \begin{enumerate}
+  \item First we let $p$ be very small. Walras Law gives that $p \cdot
+    z_1(p, 1) + 1 \cdot z_2(p, 1) = 0$ and the boundary condition
+    gives that $\max \{z_1(p,1), z_2(p,1)\} \to \infty$. Since $z_1$
+    is bounded away from $-\infty$ by the boundary condition, it
+    cannot be the case that $z_2 \to \infty$, hence we must have $z_1
+    \to \infty$, i.e. we've estalished that at this tiny $p$, $z_1(p,
+    1) > 0$
+  \item Next we let $p$ be huge. We use h.o.d. zero to rewrite $z_1(p,
+    1) = z_1(1, 1/p)$ so effectively we're letting $p_2$ become
+    tiny. By the same argument as above (Walras) since $p_2$ is
+    effectively tiny, then $z_2$ must be huge and the product is
+    strictly postive, hence $p \cdot z_1$ must be strictly
+    negative. But $p$ i s strictly positive, hence we know $z_1(p, 1)
+    < 0$ for this very large $p$.
+  \end{enumerate}
+\item Finally, since we found prices that make $z_1 < 0$ and $z_1 >
+  0$, since $z_1$ is by the proposition continuous, it must cross
+  zero, i.e. $\exists p \; : \; z(p) = 0$.
+\end{enumerate}
+
+\begin{prop}
+  If $z : \Delta \to \R^L$ is a continuous function that satisfies
+  Walras' law, then $\exists p^* \in \Delta \; : \; z(p^*) \leq 0$.
+\end{prop}
+
+We now turn our attention to proving the existence of a Walrasian
+equilibrium.
+
+\begin{proof}
+  The following is just a rough outline of how we would complete the
+  proof.
+
+  \begin{enumerate}
+  \item Define a correspondence $f: \Delta^0 \to \Delta$ by
+    \[
+    f(p) 
+    = \{q \in \Delta : q \cdot z(p) \geq q' \cdot z(p) \; \forall q' \in \Delta\}
+    \]
+    this correspondence identifies the goods with highest excess demand
+  \item Extend domain of $f$ to $\Delta$ in order to make it UHC
+  \item Verify that $p^* \in f(p^*) \implies p^* \in \Delta^0, \;
+    z(p^*) = 0$, that is, any fixed point of the correspondence $f$
+    should have strictly positive prices and zero excess demand
+  \item Check that $f$ satisfies the hypotheses of Kakutani and apply
+    it to conclude that $\exists p^* \in \Delta \; : \: p^* \in
+    f(p^*)$, hence by the above $p^* \in \Delta^0$ and $z(p^*) = 0$
+  \end{enumerate}
+\end{proof}
+
+\subsection{Large Economies}
+
+Convexity of preferences has been central throughout our treatment of
+GE. However, we might be able to get away with lack of convexity with
+large numbers of agents. Suppose we have finitely many types of
+agents, say $I$, and we have $r$ agents of each type. We can
+approximate convexity with a fixed $I$ by blowing up $r$:
+
+\begin{theorem}[Shapley-Folkman-Starr]
+  (Very roughly): the sum of a large number of arbitrary sets in a
+  finite dimensional vector space will be close to convex.
+\end{theorem}
+
+
+\subsection{General Facts about GE}
+\label{sec:general-facts-ge}
+
+Because $z$ is homogenous of degree $0$, we only care about relative
+prices, hence we only need to check market clearing in $L-1$
+markets. That is, the final market is fully determined by the other
+$L-1$.
+
+** TODO: what is the ``implication of homogeneity'' doing on p. 14 of
+lecture 9? not clear where he gets the ``when $\alpha = 1$'' thing
+from **
+
+
+\begin{definition}[Regular Prices]
+  An equilibrium price vector $p^*$ is regular if the Jacobian
+  $Dz(p^*)$ has rank $L-1$. Whenever such an equilibrium is regular,
+  we call the economy regular as well.
+\end{definition}
+
+If we have regularity, then we can trim off the final row and column
+to get an $(L-1)\times(L-1)$ matrix that is full rank. We term this
+$D\hat z(p)$. Moreover, if we fix $p^*_L = 1$ and let $q$ give the
+\textit{relative} prices, and if we (for convenience) denote $\Omega =
+\{\omega^i\}$, then we can define
+\[
+\hat z(q_1, \dots, q_{L-1}, \underbrace{1}_{p^*_L}; \Omega)
+\]
+which we can totally differentiate to get (in equilibrium, of course)
+\[
+D_q \hat z(p^*) \cdot dq + D_\Omega \hat z(p^*) \cdot d\Omega = 0
+\]
+which we can solve to get the comparative static result
+\[
+\frac{\partial q}{\partial \Omega} = - [D_q \hat z(p)]^{-1} [D_\Omega \hat z(p)]
+\]
+Hence regularity is the key condtion for comparative statics. It
+allows us to invert the matrix and solve directly for comparative
+statics results.
+
+\begin{definition}[Locally Unique]
+  An equilibrium price vector $p \in \Delta^0$ is locally unique if
+  $\exists \epsilon > 0$ such that $\forall p' \in B_\epsilon(p),
+  z(p') \neq 0$.
+\end{definition}
+
+\begin{theorem}
+  Any regular equilibrium is locally unique.
+\end{theorem}
+
+\begin{proof}
+  Apply the inverse function theorem, and if $p$ is not locally unique
+  then $p$ is not regular (i.e. we can't invert the matrix, because if
+  we could we would get a linear system around $p$, making it unique
+  locally).
+\end{proof}
+
+\begin{theorem}
+  A regular economy has a finite number of equilibria.
+\end{theorem}
+
+\begin{proof}
+  By contradition: suppose not, then there is an infinite sequence of
+  equilibrium price vectors in the simplex. Since the simplex is
+  compact, we can find converging subsequence, and since z is
+  continuous, the limit point of the sequence will not be locally
+  unique (similar to the standard proof of Bolzano-Weierstrass
+  theorem, where we make sequential cuts in the compact set; if there
+  are infinitely many limit points, no matter how many cuts we make we
+  have infinitely many points inside at least one tiny little area, so
+  we don't have local uniqueness). Thus, p is not regular.
+\end{proof}
+
+\begin{theorem}[Debreu 1970]
+  For almost every vector of initial endowments, the exchange economy
+  is regular.
+\end{theorem}
+
+\begin{theorem}[Sonnenschein-Mantel-Debreu]
+  Suppose $z$ is continuous, homogenous of degree $0$, and satisfies
+  Walras' Law. Then for any $\epsilon > 0$, $\exists k$ consumers with
+  continuous, strictly convex, and non-decreasing preferences such
+  that $z$ is the aggregate excess demand for those $k$ consumers, for
+  all $p$ such that $\frac{p_i}{||p||} > \epsilon \; \forall i$.
+\end{theorem}
+
+The above is the ``Anything Goes'' result -- any potential excess
+demand function can be in fact a demand function. In Arrow's words
+(1991), ``in the aggregate, the hypothesis of rational behavior has in
+general no implications.'' The issue is that aggregation dissipates
+the restrictions that rationality imposes (in the individual case,
+these were very strong properties on the Slutsky matrix). 
+
+The theorem says: give me an excess demand function $z(p)$ that
+satsifies continuity, homogeneity of degree 0 and Walras’ law. Then I
+can construct an economy (i.e. consumer preferences and endowments)
+that generates this excess demand function. One interpretation is that
+there are no testable implications of rationality (outside continuity,
+homogeneity of degree 0, and Walras law) when looking at the agreggate
+economy.  Why is this? \textit{The punchline is that this is all due
+  to income effects. We do have a lot of testable implications for
+  individual demand.}
+
+However, if we impose additional functional form restrictions, we can
+get something more tractible.

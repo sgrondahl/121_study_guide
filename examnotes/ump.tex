@@ -1,0 +1,96 @@
+
+\begin{definition}[UMP]
+  The consumer's utility maximization problem (UMP) is
+  \[
+  \max_{x\in B_{p,w}} u(x) \quad s.t. \quad p \cdot x \leq w
+  \]
+\end{definition}
+
+\begin{definition}[Marshallian/Walrasian Demand]
+  The Marshallian (Walrasian) Demand Correspondence $x(p,w) : X \times
+  \R \to X$ is defined by
+  \[
+  x(p,w) = \{z \in B_{p,w} | u(z) = \max_{x \in B_{p,w}} u(x) \}
+  \]
+\end{definition}
+
+\begin{prop}
+  Suppose $u$ is continuous and satisfies local nonsatiation, then:
+  \begin{enumerate}[(a)]
+  \item The UMP problem has at least one solution
+  \item $x(p,w)$ is homogenous of degree $0$, i.e. $x(\alpha p, \alpha
+    w) = x(p,w), \; \forall \alpha > 0$
+  \item $x(p,w)$ satisfies Walras' law, i.e. $p \cdot z = w, \;
+    \forall z \in x(p,w)$
+  \item If $u$ is strictly quasi-concave, then $x(p,w)$ is a function,
+    i.e. each $x(p,w)$ contains a single bundle
+  \end{enumerate}
+\end{prop}
+
+\begin{definition}[Elasticity of Demand]
+
+  The elasticity of demand with income is 
+  \[
+  \eta_i = \frac{\partial x_i}{\partial w} \cdot \frac{w}{x_i}
+  = \frac{\partial \log x_i}{\partial \log w}
+  \]
+
+  The elasticity of demand with price is 
+  \[
+  \epsilon_{ij}= \frac{\partial x_i}{\partial p_j} \cdot \frac{p_j}{x_i}
+  = \frac{\partial \log x_i}{\partial \log p_j}
+  \]
+\end{definition}
+
+\begin{prop}
+  Let $s_i$ be the budget share of good $i$, $s_i = \frac{p_i
+    x_i(p,w)}{w}$, then
+  \begin{itemize}
+  \item[(Engel aggregation)] $ \sum_{i=1}^n s_i \eta_i = 1$,
+    i.e. total expenditure must change by an amount equal to any
+    wealth change
+  \item[(Cournot aggregation)] $ \sum_{i=1}^n s_i \epsilon_{ij} =
+    -s_j$, i.e. total expenditure cannot change in response to change
+    in price
+  \end{itemize}
+\end{prop}
+
+\begin{definition}[Indirecty Utility]
+  The indirect utility function $v(p,w): X \times R \to \R$ is defined by
+  \[
+  v(p,w) = \max_{x \in B_{p,w}} u(x)
+  \]
+  which in turn is equal to
+  \[
+  v(p,w) = u(x(p,w))
+  \]
+\end{definition}
+
+\begin{prop}
+  Suppose $u$ is continuous and satisfies local nonsatiation. Then the
+  indirect utility function $v(p,w)$ is
+  \begin{enumerate}[(a)]
+  \item Homogenous of degree $0$, i.e. $v(\alpha p, \alpha w) = v(p,w)$
+  \item Strictly increasing in $w$ and nonincreasing in $p_i, \forall i$
+  \item Quasi-convex, i.e. $\{(p,w)|v(p,w) \leq v)\}$ is convex $\forall v$
+  \item Continuous in $p$ and $w$
+  \end{enumerate}
+\end{prop}
+
+
+\begin{prop}[Roy's Identity]
+  Suppose that $u$ is continuous utility function and preferences are
+  locally nonsatiated and strictly convex. Suppose that the indirect
+  utility function $v(p, w)$ is differentiable at $(p^*, w^*) >>
+  0$. Then $\forall i = 1, \dots, L$,
+  \[
+  x_i(p^*, w^*)
+  = - \frac{
+    \frac{\partial v(p^*, w^*)}{\partial p_i}
+  } {
+    \frac{\partial v(p^*, w^*)}{\partial w}
+  }
+  \]
+\end{prop}
+
+For examples, see 3.D.1 (p. 55 MWG).

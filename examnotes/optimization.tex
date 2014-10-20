@@ -1,0 +1,71 @@
+
+\begin{theorem}[Kuhn-Tucker Necessary Conditions]
+  Suppose $\bar x \in \R^N$ is a local maximizer of the following that
+  meets the given constraints:
+  \begin{align}
+    \max_{x \in \R^N} f(x) \quad s.t. \quad 
+    & g_1(x) = b_1, \dots, g_m(x) = b_m & \text{(equality constraints)} \notag \\
+    & h_1(x) = c_1, \dots, h_k(x) = c_k & \text{(inequality constraints)} \notag
+  \end{align}
+  then $\exists$ multipliers $\lambda_m \in \R$, $\lambda_k \in \R_+$
+  such that
+  \begin{enumerate}[(1)]
+  \item $\forall n \in 1, \dots, N$,
+    \[
+    \frac{\partial f(\bar x)}{\partial x_n} 
+    = \sum_{m=1}^M \lambda_m \frac{\partial g_m(\bar x)}{\partial x_n}
+    + \sum_{k=1}^K \lambda_k \frac{\partial h_k(\bar x)}{\partial x_n}
+    \]
+
+  \item $\forall k \in 1, \dots, K$,
+    \[
+    \lambda_k(h_k(\bar x) - c_k) = 0
+    \]
+    (i.e. $\lambda_k = 0$ for any $h_k(\bar x) < c_k$).
+  \end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Envelope]
+  Suppose we want to keep track of some subset of parameters, $q \in
+  \R^S$. The we can define
+  \begin{align}
+    v(q) := \max_{x \in \R^N} f(x; q) \quad s.t. \quad 
+    & g_1(x) = b_1, \dots, g_m(x) = b_m & \text{(equality constraints)} \notag
+  \end{align}
+  with $x(q)$ the $\arg \max$ of the above. And let $\lambda_1, \dots,
+  \lambda_m$ be the lagrange multipliers associated with the solution
+  $v(q)$, then $\forall s = 1, \dots, S$,
+  \[
+  \frac{\partial v(q)}{\partial q_s} 
+  = \frac{\partial f(x(q); q)}{\partial q_s}
+  - \sum_{m=1}^M \lambda_m \frac{\partial g_m(x(q); q)}{\partial q_s}
+  \]
+
+\end{theorem}
+
+\begin{definition}[LHC]
+  A correspondence $\Gamma:X \to Y$ is lower hemicontinuous (LHC) if
+  $\forall x$ and $\forall y \in \Gamma(x)$, for any sequence $x_n \to
+  x$ there exists a corresponding sequence $y_n \in \Gamma(x_n)$ with
+  $y_n \to y$. (Any point $(x,y)$ in correspondence has sequence
+  $(x_n, y_n)$ the converges to $(x,y)$). 
+\end{definition}
+
+\begin{definition}[UHC]
+  A correspondence $\Gamma:X \to Y$ is upper hemicontinuous (UHC) if
+  for every sequence $(x_n, y_n)$ in the correspondence, with $y_n \in
+  \Gamma(x_n)$ such that $x_n \to x$, then $y_n \to y \in
+  \Gamma(x)$. (Any sequence in the correspondence converges to a limit
+  point in the correspondence).
+\end{definition}
+
+\begin{theorem}[Berge/Theorem of the Maximum]
+  Let $X \subseteq \R^L$, $Y \subseteq \R^m$, $f : X \times Y \to \R$
+  continuous, $\Gamma : X \to Y$ compact-valued and continuous
+  correspondence. Then:
+  \begin{enumerate}[(1)]
+  \item $h(x) := \max_{y\in \Gamma(x)}f(x,y)$ is continuous
+  \item $G(x) := \{y \in \Gamma(x): \; f(x,y) = h(x)\}$ is nonempty,
+    compact-valued, and UHC
+  \end{enumerate}
+\end{theorem}

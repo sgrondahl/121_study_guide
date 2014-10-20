@@ -1,0 +1,120 @@
+
+
+
+
+
+
+The monopoly pricing problem is
+\[
+\max_q \pi(q)
+\]
+where $\pi(q) = q \cdot P(q) - c(q)$, and we assume it to be
+differentiable, concave, and having an interior solution. Thus the FOC
+is
+\[
+q^m \cdot P'(q^m) + P(q^m) = c'(q^m)
+\]
+
+\begin{definition}[Lerner Index]
+  The Lerner Index is given by
+  \[
+  \frac{P(q^m) - c'(q^m)}{P(q^m)}
+  \]
+\end{definition}
+
+\begin{prop}[Inverse Elasticity Rule]
+  The percentave markup in the monopoly model is
+  \[
+  \frac{P(q^m) - c'(q^m)}{P(q^m)} = - \frac{1}{\epsilon}
+  \]
+  where $\epsilon = \frac{dQ}{dP} \cdot \frac{P}{Q}$ is the price
+  elasticity of demand.
+\end{prop}
+
+
+\subsection{Assumptions}
+\label{sec:assumptions}
+
+Assume that
+\begin{itemize}
+\item[(A1)] Indirect utility has the form
+  \begin{align}
+    V_i(p,w) & = \max_{q : p \cdot q \leq w} u_i(q_1, \dots, q_L) & \notag \\
+    & = \max_{q_1} f_i(q_1) + [w - p_1 q_1] & \notag
+  \end{align}
+  which gives us that Marshallian demand has no income effect, so we
+  can write $x(p)$ instead of $x(w,p)$ and we can make comparisons
+  across consumers with different levels of wealth
+\item[(A2)] $w_i = w_{0i} + s_i \pi(p)$ which means that firms are
+  owned by consumers, where $s_i$ is consumer $i$'s share of the
+  profits that the firm obtains
+\end{itemize}
+
+\subsection{Monopolist Quantity}
+\label{sec:monopolist-quantity}
+
+
+
+\begin{prop}
+  Given any depand curve $P(q)$ and cost function $c(q, \theta)$, define
+  \[
+  q^m = \sum \arg \max_q q \cdot p(q) - c(q, \theta)
+  \]
+  If $c(q, \theta)$ has increasing differences, then $q^m$ is weakly
+  increasing in $\theta$.
+\end{prop}
+
+\begin{prop}[Monopolistic Underprovision]
+  Let
+  \[
+  q^{FB} = \sup \arg \max_q \int_0^q P(s) ds - c(q)
+  \]
+  and
+  \[
+  q^m = \sup \arg \max_q q \cdot P(q) - c(q)
+  \]
+  If $P'(q) \leq 0$ then $q^m \leq q^{FB}$.
+\end{prop}
+
+
+
+\subsection{Monopolist Quality}
+\label{sec:monopolist-quality}
+
+Suppose a monopolist chooses quality $s$ in addition to quantity, so
+now we can define
+\[
+W(q,s) = \int_0^q P(x,s) dx - c(q,s)
+\]
+and
+\[
+\pi(q,s) = q \cdot P(q,s) - c(q,s)
+\]
+
+\begin{prop}
+  Let 
+  \[
+  s^{FB} = \sup \arg \max_s W(q,s)
+  \]
+  and
+  \[
+  s^m(q) = \sup \arg \max_s \pi(q,s)
+  \]
+  If $P(q,s)$ has decreasing differences in $q$, then $s^{FB}(q) \geq
+  s^m(q)$.
+\end{prop}
+
+The intuition here is that the value of quality is less for the
+marginal consumer than for the average consumer. Since the monopolist
+only cares about the marginal consumer but the social planner cares
+about the average consumer, we get a distortion from optimum, known as
+the \textbf{Spence Distortion}. On the other hand, the IO literature
+notes that since the monopolist sells fewer units, the marginal
+monopolist consumer has a higher value than the social planner's
+marginal consumer. Thus in richer models where $q$ can vary (in the
+above we've fixed $q$), this effect can offset and yield $s^m >
+s^{FB}$.
+
+
+
+

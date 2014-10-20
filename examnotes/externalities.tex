@@ -1,0 +1,380 @@
+
+
+
+
+\subsection{Preliminaries}
+\label{sec:preliminaries}
+
+Consumers are assumed to have utility functions that take quasilinear
+form.
+
+\begin{definition}[Quasilinear Utility]
+  A utility function is quasilinear with respect to a numeraire
+  commodity if it takes the form
+  \[
+  u_i(x_{i}, h) = g_i(x_{-1i}, h) + x_{1i}
+  \]
+  where $x_1$ is the numeraire and $x_{-1}$ is all other goods. Thus
+  the consumer gets linear utility in the numeraire and will always
+  consumer other goods only until on the margin the numeraire is
+  preferred, i.e the consumption decision for other goods
+  $x_{-1i}(p,h)$ is constant as a function of wealth. We can then
+  write the indirect utility function as
+  \[
+  v_i(p,w,h) = g_i(x_{-1i}(p,h), h) + (w_i - p \cdot x_{-1i}(p, h))
+  \]
+  there the final term is the amount of money left over for the
+  numeraire. If we then let $\phi_i(p,h) := g_i(x_{-1i}(p,h), h) - p
+  \cdot x_{-1i}(p, h)$ we get indirect utility of the form
+  \[
+  v_i(p, w_i, h) = \phi_i(p,h) + w_i
+  \]
+  which, as above, has no wealth effects.
+\end{definition}
+
+We additionally assume that prices of traded goods are unaffected by
+any actions within our model, so we assume $p$ is constant and
+suppress its notation. That is, we denote $\phi_i(p,h)$ as
+$\phi_i(h)$. We further assume that $\phi \in {\cal C}^2$ with
+$\phi''_i(\cdot) < 0$. In what follows, we study a two agent model,
+where the first consumer makes the choice about how much of the
+externality to consume.
+
+The first consumer chooses $h$ to solve
+\[
+\max_{h \geq 0} \phi_1(h)
+\]
+which gives, at the optimum,
+\[
+\phi_1'(h^*) \leq 0 \quad \text{with equality if } h^* > 0
+\]
+(because she cannot consume negative externality).
+
+By contrast, any Pareto Optimal allocation $h^\circ$ would solve
+\[
+\max_{h \geq 0} \phi_1(h) + \phi_2(h)
+\]
+which gives, at the optimum
+\[
+\phi_1'(h^\circ) \geq -\phi_2'(h^\circ) \quad \text{with equality if } h^\circ > 0
+\]
+
+Note that unless $h^* = h^\circ = 0$, as long as $\phi_2(h) \neq 0$
+the equilibrium level of $h$ is not Pareto efficient.
+
+\subsection{Solutions to the Externality Problem}
+\label{sec:solut-extern-probl}
+
+\subsubsection{Quotas}
+
+Suppose that $h$ generates a negative external effect, so that
+$h^\circ < h^*$. Then the government could impose that $h \leq
+h^\circ$ and indeed consumer one would set the level of the
+externality at $h^\circ$.
+
+\subsubsection{Taxes}
+
+The government could either tax per unit of $h$ or subsidize per unit
+reduction of $h$ (on consumer $1$). Suppose consumer $1$ were forced
+to pay a tax $t_h$ per unit of $h$. Then she maximizes
+\[
+\max_{h \geq 0} \phi_1(h) - t_h \cdot h
+\]
+thus if $t_h = - \phi_2'(h^\circ) > 0$, the competitive equilibrium
+will be $\phi_1'(h) = t_h = -\phi_2'(h)$, which is satisfied by
+$h^\circ$. This type of tax is known as a Pigouvian corrective tax. In
+particular, the optimality-resotoring tax is set at the level of the
+marginal externality at the optimal solution.
+
+We could also have used a subsidy above, which has consumer $1$
+maximize
+\[
+\max_h \phi_1(h) + s_h(h^\circ - h)
+\]
+which is effectively a lump sum transfer combined with a tax, and can
+be optimality restoring.
+
+Note that in many cases the government lacks sufficient information
+about the costs and benefits of the externality, and also sometimes is
+unable to directly tax the externality and instead must apply quotas
+or taxes to total output. In these cases, we often cannot achieve an
+efficient outcome.
+
+\subsection{Coase}
+\label{sec:coase}
+
+Coase viewed the externality problem as arising from a combination of
+\begin{enumerate}[(i)]
+\item lack of clearly specified property rights
+\item transaction costs
+\end{enumerate}
+
+
+\begin{theorem}[Coase]
+  If property rights are clearly specified and there are no
+  transaction costs, bargaining will lead to an efficient outcome no
+  matter how the rights are allocated.
+\end{theorem}
+
+Note that this does not say that distribution is unaffected, just that
+an efficient outcome is attained.
+
+As an example, consider allocating to consumer $2$ rights to
+externality free environment. She can make a take it or leave it offer
+of payment $T$ (that consumer $1$ would make to her) in order for $1$
+to have the rights to consume the externality at level $h$ (but
+consumer $1$ may reject the deal). Thus consumer $2$ maximizes
+\[
+\max_{h, T} \phi_2(h) + T \quad s.t. \quad \phi_1(h) - T \geq \phi_1(0)
+\]
+but since the constraint is binding, we can solve for $T$ and plug in
+to get the reframed problem for consumer $1$:
+\[
+\max_h \phi_2(h) + \phi_1(h) - \phi_1(0)
+\]
+which yields the FOC that guarantees the socially optimal level.
+
+If we switched the property rights, such that consumer $1$ has the
+right to generate as much $h$ as she wants. Still consumer $2$ makes a
+take it or leave it offer to consumer $1$ offering payment $T$ in
+order to reduce the externality to $h$. Then consumer $1$'s problem is
+\[
+\max_{h,T} \phi_2(h) - T \quad s.t. \quad \phi_1(h) + T \geq \phi_1(h^*)
+\]
+again the constraint is binding so we can rewrite the above to
+\[
+\max_h \phi_2(h) - (\phi_1(h^*) - \phi_1(h))
+\]
+which again gives FOCs that generate the social optimum.
+
+Note that in special case where two parties are firms, another
+solution to let the two firms merge. The resulting firm would fully
+internalize the externality when maximizing profits. Note also that
+unlike the tax and quota schemes, Coase’s approach only requires that
+the consumers know each others preferences, and not government.
+
+
+
+\subsection{Myerson Satterthwaite}
+\label{sec:myers-satt}
+
+Suppose $h$ is now a discrete choice, $\{0, \bar h\}$ and $\theta,
+\eta$ random variables that influence each agent's utility, i.e.
+$\phi_1(h; \theta)$ and $\phi_2(h; \eta)$. Then we can define
+\[
+b(\phi) = \phi_1(\bar h; \theta) - \phi_1(0; \theta) > 0
+\]
+and
+\[
+s(\phi) = \phi_2(0; \eta) - \phi_2(\bar h; \eta) > 0
+\]
+thus when $b(\theta) > s(\eta)$ the Pareto optimal level is $\bar
+h$. Then if we let $G(b)$ and $F(s)$ be the CDFs induced by $\theta,
+\eta$, and we give consumer $2$ the right to an externality free
+environment, then she will always choose $h=0$ which is inefficient if
+$b(\theta) > s(\eta)$.
+
+Suppose now we allow consumer $1$ to offer a transfer $T$ for the
+ability to consume $\bar h$. And assume each consumer knows their own
+values but not the other person's. Under this transfer, we know
+consumer $2$ will agree iff $T \geq s$, the probability of which is
+$F(T)$. Hence consumer $1$ solves
+\[
+\max_T \underbrace{F(T)}_{P(\text{2 accepts})}
+\underbrace{(b - T)}_{\text{payoff}}
+\]
+and will make an offer $T$ that is less than $b$ (positive profits)
+but is greater than the minimum value of $s$ (otherwise agent $2$
+never accepts). But suppose given the realization of $\eta$ that 
+\[
+b(\theta) > s(\eta) > T
+\]
+then in this case the efficient level is $\bar h$ since $b(\theta) >
+s(\eta)$, but the offer will be rejected. Hence there is a positive
+probability of inefficiency in this context even with transfers.
+
+\begin{prop}[Myerson-Sattherthwaite]
+  No bargaining procedure can lead to an efficient outcome for all
+  values of $b$ and $s$ when they are private information and
+  independently distributed.
+\end{prop}
+
+\subsection{Missing Markets}
+\label{sec:missing-markets}
+
+Suppose we can construct a competitive market for the externality
+(which may not always be possible), with price per unit $p_h$. Then
+consumer $1$ buys rights to $h$ to solve
+\[
+\max_{h_1} \phi_1(h_1) - p_h h_1
+\]
+and consumer $2$ sells rights to $h$ to solve
+\[
+\max_{h_2} \phi_2(h_2) + p_h h_2
+\]
+which gives the two FOCS
+\[
+\phi_1'(h_1) = p_h \quad \text{and} \quad \phi_2'(h_2) = -p_h
+\]
+which clearly generateds the Pareto Optimal level of the externality
+in equilibrium (when we impose $h_1 = h_2 = h^{**}$. 
+
+
+\subsection{Prices versus Quantities}
+\label{sec:pric-vers-quant}
+
+
+
+We saw earlier that taxes and quotas generated efficient levels of the
+externality. Yet when we add uncertainty, the two are not equivalent
+any longer.
+
+\subsubsection{Setup}
+
+
+Suppose that firms generate externalities (and can be regulated) and
+consumers derive negative benefit from the externalities. Suppose
+there is uncertainty in the value of the externality, with the firm's
+profit given by $\pi(h, \theta)$ and the consumer's utility $\phi(h,
+\eta)$, where $\theta, \eta$ are random variables that are privately
+observed. However, the CDFs of $\theta, \eta$ are publicly known
+\textit{ex ante}. We assume that $\pi(h,\theta)$ and $\phi(h, \eta)$
+are strictly concave in $h, \forall \theta, \eta$.
+
+If the government could obesrve realizations of $\theta$ and $\eta$
+and make its decision \textit{ex post} then it would get the first
+best quota
+\[
+h^\circ(\theta, \eta) = \arg \max_h \{ \pi(h, \theta) + \phi(h, \eta) \}
+\]
+or tax
+\[
+t_h^\circ(\theta, \eta) 
+= \frac{\partial \pi(h^\circ(\theta, \eta), \theta)}{\partial h}
+= \frac{\partial \phi(h^\circ(\theta, \eta), \theta)}{\partial h}
+\]
+these are the first best solutions, and form the basis of
+comparison. Both will yield equilibrium externality levels of
+$h^\circ$, given above.
+
+
+However, the government is often unable to observe these values, or at
+least unable to craft policy in response to every realization. So now
+we assume the government must commit in advance to a tax or quota
+policy, knowing only the \textit{ex ante} distributions of $\theta$
+and $\eta$. 
+
+We must first consider the firm's response to taxes or quantity
+regulation. In the case of quantity regulation with quata $\hat h$,
+the firm solves
+\[
+\max_{h \geq 0} \pi(h, \theta) \quad s.t. \quad h \leq \hat h
+\]
+and we denote the optimal choice $h^q(\hat h, \theta)$. In the case of
+a tax, the firm solves
+\[
+\max_{h \geq 0} \phi(h, \theta) - th
+\]
+and we denote the optimal choice $h^t(t, \theta)$. 
+
+
+We now consider the optimal tax or quota from the government's
+perspective. Under quota regulation the planner solves
+\[
+\hat h^* = \arg \max_{\hat h}
+E \left[ \pi(h^q(\hat h, \theta), \theta) 
++ \phi(h^q(\hat h, \theta), \eta) \right]
+\]
+and in the case of taxation the planner solves
+\[
+t^* = \arg \max_t
+E \left[ \pi(h^t(t, \theta), \theta)
++ \phi(h^t(t, \theta), \eta) \right]
+\]
+
+Note that these optimizations are performed in expectation, so in
+general it will not be the case that for any given realization they
+are first best. Thus we will want to study the loss in aggregate
+surplus under given realizations of $(\theta, \eta)$. In the case of a
+quota, the loss is
+\[
+(\pi(h^q(\hat h, \theta), \theta) + \phi(h^q(\hat h, \theta), \eta))
+- (\pi(h^\circ(\theta, \eta), \theta) + \phi(h^\circ(\theta, \eta), \eta))
+\]
+which is equivalent to
+\[
+\int_{h^\circ(\theta, \eta)}^{h^q(\hat h, \theta)}
+\left( \frac{\partial \pi(h, \theta)}{\partial h}
++ \frac{\partial \phi(h, \eta)}{\partial h} \right) dh
+\]
+and in the case of a tax the loss is
+\[
+(\pi(h^t(t, \theta), \theta) + \phi(h^t(t, \theta), \eta))
+- (\pi(h^\circ(\theta, \eta), \theta) + \phi(h^\circ(\theta, \eta), \eta))
+\]
+which is equivalent to
+\[
+\int_{h^\circ(\theta, \eta)}^{h^t(t, \theta)}
+\left( \frac{\partial \pi(h, \theta)}{\partial h}
++ \frac{\partial \phi(h, \eta)}{\partial h} \right) dh
+\]
+
+
+Weitzman makes functional form simplifications which are similar to
+second order Taylor approximations around the point $\hat h^*$ to give
+\[
+\pi(h, \theta) 
+= b(\theta) + (\pi' + \beta(\theta))(h - \hat h^*) + \frac{\pi''}{2}(h - \hat h^*)^2
+\]
+and
+\[
+\phi(h, \theta) 
+= a(\eta) + (\phi' + \alpha(\eta))(h - \hat h^*) + \frac{\phi''}{2}(h - \hat h^*)^2
+\]
+with
+\[
+E[\beta(\theta)] = E[\alpha(\eta)] = 0
+\]
+and he defines the advantage of a tax over quota regulation as
+\[
+\Delta 
+= E[\{ \pi(h^t(t, \theta), \theta) + \phi(h^t(t, \theta), \eta) \}
+- \{ \pi(\hat h, \theta) + \phi(\hat h, \eta) \} ]
+\]
+to give the result
+
+\begin{prop}[Weitzman]
+  The benefit of price regulation over quantity regulation, as given
+  above, is
+  \[
+  \Delta = \frac{\sigma^2}{2(\phi'')^2}(\pi'' - \phi'') = (+)[(-) + (+)]
+  \]
+  where $\sigma^2$ is the variance of $\phi$ at $\hat h$. This means
+  that price regulation is better than quantity regulation if and only
+  if $\phi'' > |\pi''|$. The intuition is that prices are better when
+  the firm faces more uncertainty, since they allow variability here,
+  while quantities are better when the consumer faces more
+  uncertainty, since it imposes a hard cap on the externality.
+\end{prop}
+
+\subsection{Equilibrium Number of Boats}
+\label{sec:equil-numb-boats}
+
+This is an example that is addressed both in lecture and in the
+problem set, so see either for full exposition and solution. Basically
+the planner cares about average cost of sending out additional boats
+while the individual fisherman only care about whether they can make
+positive profit on the margin (they don't internalize the externality
+that they impose on the other fishermen by reducing the number of fish
+per capita or something). Thus the planner's number of boats is always
+smaller than if we let the fishermen decide on their own.
+
+
+
+** TODO: do we need to know Lindahl equilibrium? I think it was on a problem set, and is addressed briefly on MWG pp. 363--364 **
+
+** TODO: write up definitions of depletable and non-depletable externalities MWG section 11.D **
+
+
+
+

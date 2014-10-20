@@ -1,0 +1,243 @@
+A utility function serves two purposes:
+
+\begin{enumerate}
+\item Positive -- used to predict behavior (utility maximization)
+\item Normative -- used to determine what is `good' (welfare analysis)
+\end{enumerate}
+
+\begin{definition}[Choice Space]
+  Let a choice space $X \subset \R^N$ be the set of states of
+  the world (in an abstract sense).
+\end{definition}
+
+
+\begin{definition}[Utility Function]
+  A utility function is a map $u: X \to \R$.
+\end{definition}
+
+\begin{definition}[Preference]
+  A preference is a set $P \subset X \times X$ with $x \succeq_p y$ if
+  $(x,y) \in P$.
+\end{definition}
+
+\begin{definition}
+  The utlitity function $u: X \to \R$ \textbf{represents} a preference
+  $P$ if $u(x) \geq u(y) \iff x \succeq_p y$.
+\end{definition}
+
+Note: In general, representations are not unique. In fact, given any
+strictly increasing function $f: \R \to \R$ and some $u$ representing
+$P$, $f \circ u$ also represents $P$.
+
+\begin{definition}[Complete]
+  A preference relation $\succeq_p$ is complete on $X$ if $\forall x,y
+  \in X$ either $x \succeq_p y$ or $y \succeq_p x$.
+\end{definition}
+
+\begin{definition}[Reflexive]
+  A preference relation $\succeq_p$ is reflexive on $X$ if $\forall x
+  \in X$, $x \succeq_p x$.
+\end{definition}
+
+\begin{definition}[Transitive]
+  A preference relation $\succeq_p$ is transitive on $X$ if $\forall
+  x,y,z \in X$, $(x \succeq_p y) \wedge (y \succeq_p z) \implies x
+  \succeq_p z$.
+\end{definition}
+
+\begin{prop}
+  If $\succeq_p$ is represented by $u$ on $X$, then $\succeq_p$ is
+  complete, reflexive, and transitive.
+\end{prop}
+
+\begin{proof}
+  Prove each part separately:
+  \begin{enumerate}
+  \item Complete: $\forall x,y \in X, u(x) \geq u(y)$ or $u(y) \geq
+    u(x)$ (property of $R$), $\implies x \succeq_p y$ or $y
+    \succeq_p x$.
+  \item Reflexive: $\forall x \in X, u(x) \geq u(x)$ (function well
+    defined) $\implies x \succeq_p x$.
+  \item Transitive: $x \succeq_p y, y \succeq_p z \implies u(x)
+    \geq u(y)$ and $u(y) \geq u(z)$ (because $u$ is
+    representative). Then by transitivity on $\R$ we have $u(x) \geq
+    u(z)$, and again because $u$ is representative, $x \succeq_p z$.
+  \end{enumerate}
+\end{proof}
+
+
+Can preferences reasonably violate these properties? Consider each one
+individually:
+\begin{itemize}
+\item Intransitive preferences permit a cycle $x \to y \to z \to x$
+  such that an agent is being made better off with each exchange, so
+  this would permit a small charge to be extracted at each exchange
+  without ultimately changing the agent's choice, which is referred to
+  as the ``Dutch Book.'' It is thought that since we don't observe
+  this in practice that such preferences must not exist, but it is
+  possible that some other frictions exist.
+\item Anything without reflexivity makes not sense at all, so we don't
+  consider it.
+\item Some preferences might not be complete, generally because of:
+  \begin{enumerate}
+  \item moral issues -- agents might refuse to establish a preference
+    over certain alternatives for moral issues (e.g. killing one vs
+    killing 100)
+  \item bounded rationality -- might not even be able to fully
+    consider all possible states of the world, so can't have complete
+    preferences
+  \end{enumerate}
+\end{itemize}
+
+As an aside, consider a famous experiment that seems to isolate
+preferences which violate transitivity. Kahneman and Tversky (1984) do
+(basically) the following: Tell people they are going to MIT Coop to
+buy \$125 stereo and \$15 calculator. Then salesman either says that
+the calculator or stereo is on sale at the Harvard Coop for \$5
+cheaper. Most people choose to travel to Harvard Coop to get \$5 if it
+is taken off calculator, but most don't if it is taken off stereo
+(they just buy the stuff at the MIT Coop). A third treatment has the
+salesman say that they are out of stock of both items, but if people
+go to the Harvard Coop (where the stuff is in stock), they can choose
+to take \$5 off of either item, and people are indifferent about which
+item to discount. Thus if we consider $x$ to be getting \$5 off
+calculator by buying at Harvard Coop, $y$ to be getting \$5 off stereo
+by buying at Harvard Coop, and $z$ just buying both at MIT, the first
+two treatments give us that $x \succeq z$ and $z \succeq y$, but the
+third treatment gives us that $x ~ y$, a contradiction (since
+transitivity) should have given us taht $x \succeq y$. The finiding is
+controversial, and it is often argued that people only make this
+mistake because they are uneducated about/unfamiliar with this
+situation. In fact, John List (Chicago) has a bunch of papers dealing
+with baseball card markets, and he finds that experience limits
+irrational/paradoxical behaviors. See also Gul and Pesendorfer, ``The
+Case for Mindless Economics,'' which is a response to neuroeconomics.
+
+
+Suppose we have the three properties we've been studying, then is the
+converse of the previous proposition true, i.e. can we always find a
+$u$ that represents $\succeq_p$?
+
+\begin{prop}
+  Let the choice space $X \subset \R^N$ be finite, $P$ a preference on
+  $X$ with $\succeq_p$ complete, reflexive, and transitive on $X$, then 
+  there exists a utlity function $u$ that represents $P$.
+\end{prop}
+
+\begin{proof}
+  Let $B(x) := \{ z\ in X : x \succeq_p z \}$, with $B$ meaning
+  ``below.'' Then we can define $u(x) = |B(x)|$, which is well defined
+  since $X$ is finite (note that the worst item $w \in X$ has $u(w) =
+  |B(w)| = 1$ by reflexivity. Prove each direction of representation:
+  \begin{enumerate}
+  \item Show that $u(x) \geq u(y) \implies x \succeq_p y$. Note
+    first that $u(x) \geq u(y) \implies |B(x)| \geq |B(y)|$. There
+    are two possibilities:
+    \begin{enumerate}
+    \item $y \in B(x)$, meaning (by construction of $B$) that $x
+      \succeq_p y$, or
+    \item $y \not\in B(x) \implies |B(x)| = |B(x) \setminus \{y\}|$,
+      and using reflexivity we have $y \in B(y) \implies |B(y)| - 1 =
+      |B(y) \setminus \{y\}|$. Moreover, $|B(x)| \geq |B(y)| \implies
+      |B(x) \setminus \{y\}| = |B(x)| > |B(y)| - 1 = |B(y) \setminus
+      \{y\}|$. Hence there must be some $z \in X \setminus \{y\}$ such
+      that $z \in B(x)$ but $z \not\in B(y)$, i.e. $x \succeq_p z$ but
+      $y \not\succeq_p z$. Using completeness of $P$, though, we
+      therefore have $z \succeq_p y$, therefore by transitivity we
+      have $x \succeq_p y$, meaning $y \in B(x)$ (by construction), a
+      contradiction.
+    \end{enumerate}
+  \item Show that $x \succeq_p y \implies u(x) \geq u(y)$. Suppose
+    that in fact $x \succeq_p y$. Then $\forall z \in X, z \in B(y)
+    \implies y \succeq_p z \implies x \succeq_p z$ (by transitivity)
+    $\implies z \in B(x)$ (by construction), which in combination
+    gives $z \in B(y) \implies z \in B(x)$, hence $B(y) \subseteq
+    B(x)$ and therefore $|B(y)| \leq |B(x)|$, i.e. $u(y) \leq u(x)$.
+  \end{enumerate}
+\end{proof}
+
+\begin{definition}[Monotone Preference Relation]
+  A preference relation $\succeq$ on $X$ is monotone if $\forall x,y \in X, y
+  \geq x \implies y \succeq x$.
+\end{definition}
+
+\begin{definition}[Strictly Monotone Preference Relation]
+  A preference relation $\succeq$ on $X$ is strictly monotone if $\forall x,y
+  \in X$ with $x \neq y$, $y \geq x \implies y \succ x$.
+\end{definition}
+
+\begin{definition}[Locally Non-Satiated Preference Relation]
+  The preference relation $\succeq$ on $X$ is locally non-satiated if
+  $\forall x \in X$, and $\forall \delta > 0, \exists y \in X$
+  s.t. $||y-x|| < \delta$ and $y \succ x$.
+\end{definition}
+
+\begin{definition}[Convex Preference Relation]
+  The preference relation $\succeq$ on $X$ is convex if $\forall x,y
+  \in X$, $(y \succeq x) \wedge (z \succeq x) \wedge (y \neq z) \implies
+  \forall \alpha \in (0,1), \alpha y + (1-\alpha)z \succeq x$.
+\end{definition}
+
+\begin{definition}[Continuous Preference Relation]
+  The preference relation $\succeq$ on $X$ is continuous if it is
+  preserved under limits: for any sequence $\{(x^n,y^n)\}_{n=1}^\infty
+  $ with $x^n \succeq y^n \forall n$, $x \succeq y$ where $x, y$ are
+  limit points of the respective sequences.
+\end{definition}
+
+Note: lexicographic preferences are not continuous. Consider the
+elements of the choice space with (ordered) components, $x = (x_1,
+x_2), y = (y_1, y_2)$. Then $\succeq$ is defined by $x \succeq y$ if
+$x_1 > y_1$ or $x_1 = y_1$ and $x_2 > y_2$. Then if we consider $x^n =
+(\frac{1}{n}, 0), y^n = (0, 1)$, we have $x^n \succeq y^n$ but $y (= (0,1))
+\succeq x (= (0,0))$.
+
+\begin{theorem}[Debreu's Theorem]
+
+  Suppose the rational preference relation $\succeq$ on $X$ is
+  continuous. Then there is a continuous utility function $u(x)$ that
+  represents $\succeq$.
+  
+\end{theorem}
+
+** TODO: do we need proof of Debreu?? **
+
+\begin{definition}[Directly Revealed]
+  At given price vector $p$, if consumption bundle $x$ is chosen when
+  $y$ could have been chosen, we say $x$ is directly revealed
+  preferred to $y$, $x R^D y$.
+\end{definition}
+
+\begin{definition}[Indirectly Revealed]
+  If a sequence of direct comparisons indicates that $x$ is preferred
+  to $y$, then $x$ is revealed preferred to $y$. That is, if
+  \[
+  xR^Dz_1, z_1R^Dz_2, \dots, z_nR^Dy
+  \]
+  when we write $xRy$.
+\end{definition}
+
+\begin{definition}[GARP]
+  A set of consumption choices $\{(p^1,x^1), \dots, (p^n, x^n)\}$
+  satisfies the general axiom of revealed preferences (GARP) if and
+  only if
+  \[
+  x^i R x^j \implies \neg (x^j P^D x^i)
+  \]
+\end{definition}
+
+\begin{prop}[Arfiat 1967]
+  Let $\{(p^1,x^1), \dots, (p^n,x^n)\}$ be a finite set of consumption
+  choices.  If a finite set of demand data violates GARP, then tehse
+  data are inconsistent with choice according to locally nonsatiated,
+  complete, and transitive preferences.
+
+  Conversely, if a finite set of demand data satisfies GARP, then
+  these data are consistent with choice according to strictly
+  increasing, continuous, convex, complete, and transitive
+  preferences.
+\end{prop}
+
+Arfiat is huge because it gives succinct, testable conditions that a
+finite dataset must satisfy to be consistent with utility
+maximization.
