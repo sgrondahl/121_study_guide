@@ -1,20 +1,120 @@
+
+
+\subsection{Utility Functional Forms}
+\label{sec:util-funct-forms}
+
 \begin{definition}[Quasi-Concave]
-  ** TODO, including strict **
+  A function $f : X \to \R$ is (strictly) quasiconcave if every upper level set
+  of $f$ is convex, i.e. $\forall a \in \R$,
+  \[
+  P_a := \{x \in S \; | \: f(x) \geq a\}
+  \]
+  is (strictly) convex.
 \end{definition}
+
+\begin{prop}
+  The function $f$ is quasiconcave if and only if $\forall x \in S,\;
+  \forall x' \in S, \; \forall \lambda \in [0,1]$,
+  \[
+  f(x) \geq f(x') \implies f((1-\lambda)x + \lambda x') \geq f(x')
+  \]
+  that is, the line segment connecting any two level curves lies
+  nowhere below the level curve corresponding to the lower value of
+  the objective. The function is strictly quasiconcave if the
+  inequality is strict.
+\end{prop}
+
+\begin{prop}
+  A concave function is quasiconcave. A convex function is
+  quasiconvex. (The converse is not necessarily true).
+\end{prop}
+
+\begin{prop}
+  If $f$ is quasiconcave and $g: \R \to \R$ is increasing, then $g
+  \circ f$ is quasiconcave.
+\end{prop}
+
+
+\textbf{Why do we care about quasiconcavity?} Ah, good question! The
+reason is that we want every upper level set of the utility function
+(i.e. the set bounded below by an \textit{indifference curve}) to be
+convex. If we did not have this condition, then in general we would
+not get interior solutions. Consider quasiconvex indifference curves
+(i.e. level curves of the utility function). Then we would
+\textit{always} get a corner solution for optimal utility under a
+linear budget constraint.
+
+
+For completeness, we include definitions also of quasiconvexity,
+though we tend not to use these at all.
+
+\begin{definition}[Quasi-Convex]
+  A function $f : X \to \R$ is quasiconvex if every lower level set
+  of $f$ is convex, i.e. $\forall a \in \R$,
+  \[
+  P_a := \{x \in S \; | \: f(x) \leq a\}
+  \]
+  is convex.
+\end{definition}
+
+\begin{prop}
+  If $f$ is quasiconvex and $g: \R \to \R$ is decreasing, then $g
+  \circ f$ is quasiconvex.
+\end{prop}
 
 \begin{definition}[Homogenous Function]
-  ** TODO, with degrees **
+  A function $f: V \to W$ between vector spaces over a field $F$ if
+  homogenous of degree $k$ ($k \in \Z_+$) if
+  \[
+  f(\alpha v) = \alpha^kf(v)
+  \]
+  $\forall \alpha \in F, \alpha \neq 0, v \in V$.
 \end{definition}
 
-\begin{definition}[Homothetic]
-  ** TODO **
+\begin{definition}[Homothetic Preferences]
+  A set of preferences is homothetic if for any bundles $(x,y)$ and
+  $(x', y')$, and any $\alpha > 0$,
+  \[
+  (x,y) \sim (x', y') \implies (\alpha x, \alpha y) \sim (\alpha x', \alpha y')
+  \]
 \end{definition}
 
+\begin{prop}[Homothetic Utility]
+  Preferences are homothetic if and only if they admit representation
+  by a utility function with the following property:
+  \[
+  u(x, y) = u(x', y') \implies u(\alpha x, \alpha y) = u(\alpha x', \alpha y')
+  \]
+  $\forall \alpha > 0$. 
+\end{prop}
 
-** TODO: Parag put this in lecture 8: GE but never used them **
+\begin{prop}
+  Homothetic preferences admit representation by a utility function
+  with the following property:
+  \[
+  u(\alpha x, \alpha y) = \alpha u(x,y)
+  \]
+  $\forall \alpha > 0$. Note that unlike the previous result, this is
+  not bidirectional; many utility functions without the above property
+  represent homothetic preferences.
+\end{prop}
 
-Before we can prove the Welfare Theorems, we need a few mathematical
-prelimiaries.
+\begin{proof}
+  We proceed by construction. Construct $u$ such that $u(z,z) =
+  z$. Now consider any point $(x,y)$ and find the $(z,z)$ such that
+  $(x,y)\sim(z,z)$ and note then that $u(x,y) = z$. Then it must be
+  the case that $(\alpha x, \alpha y) \sim (\alpha z, \alpha
+  z)$. Hence $u(\alpha x, \alpha y) = \alpha z = \alpha u(z, z) =
+  \alpha u( x,y)$, competing the proof.
+\end{proof}
+
+Note: Cobb-Douglas and Leonteif utility functions are homothetic.
+
+\subsection{Walrasian Equilibrium Existence Preliminaries}
+\label{sec:walr-equil-exist}
+
+Note: Parag put these in lecture 8 but never used them to prove
+existence.
 
 \begin{theorem}[Separating Hyperplane Theorem]
   If $B, C \subseteq \R^L$ are convex and nonempty, and $B \cap C =

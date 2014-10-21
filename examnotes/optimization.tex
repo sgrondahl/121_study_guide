@@ -25,7 +25,78 @@
   \end{enumerate}
 \end{theorem}
 
-\begin{theorem}[Envelope]
+\begin{prop}[Bang for the Buck]
+  For a given utility function $u(x)$, prices that generate an
+  interior solution $x^*$ must satisfy
+  \[
+  \frac{
+    \frac{\partial u(x^*)}{\partial x_j}
+  } {
+    \frac{\partial u(x^*)}{\partial x_i}
+  }
+  = \frac{p_j}{p_i}
+  \]
+\end{prop}
+
+\begin{proof}
+  Suppose $x^*$ is an interior solution, and consider a feasible
+  perturbation $x'$ where the agent spends $\delta$ less on $j$ and
+  $\delta$ more on $i$. Then locally
+  \[
+  u(x') \approx u(x^*) 
+  + \frac{\partial u(x^*)}{\partial x_j}\left(-\frac{\delta}{p_j}\right)
+  + \frac{\partial u(x^*)}{\partial x_i}\left(\frac{\delta}{p_i}\right)
+  \]
+  and since $x^*$ is the interior maximimum, moving to $x'$ cannot
+  increase utility, hence (for small $\delta$)
+  \[
+  u(x') \leq u(x^*) \implies
+  \frac{\frac{\partial u(x^*)}{\partial x_j}}{p_j}
+  \geq \frac{\frac{\partial u(x^*)}{\partial x_i}}{p_i}
+  \]
+  and vice versa if we spend $\delta$ mroe in $j$ and $\delta$ less on
+  $i$. Thus we have two inequalitys which in combination give the
+  desired result:
+  \[
+  \frac{
+    \frac{\partial u(x^*)}{\partial x_j}
+  } {
+    \frac{\partial u(x^*)}{\partial x_i}
+  }
+  = \frac{p_j}{p_i}
+  \]
+\end{proof}
+
+
+\begin{prop}[Envelope Theorem without Constraints]
+  Let $\phi(\alpha) = \max_x f(x; \alpha)$ and let $x(\alpha)$ be the
+  maximizing argument. Suppoes that $\alpha$ is differentiable at
+  $\bar \alpha$ and that $\phi(\alpha)$ is uniquely maximized at $\bar
+  \alpha$, then
+  \[
+  \frac{d \phi}{d \alpha_i} 
+  = \frac{\partial f(x(\bar \alpha); \bar \alpha)}{\partial \alpha_i}
+  \]
+\end{prop}
+
+\begin{proof}
+  We get from the total derivative of a parametrized function (section
+  \ref{sec:calculus}) that 
+  \[
+  \frac{d \phi(\alpha)}{d \alpha_i}
+  = \frac{\partial f(x(\alpha); \alpha)}{\partial a_i}
+  + \sum_j 
+  \frac{\partial f(x(\alpha);\alpha)}{\partial x_j}
+  \frac{\partial x_j(\alpha)}{\partial \alpha_i}
+  \]
+  but since $x(\bar \alpha)$ uniquely maximizes $f$,
+  \[
+  [Df(x(\bar \alpha); \bar \alpha)] = [0]
+  \]
+  so the first term in the sum is always zero, giving our desired result.
+\end{proof}
+
+\begin{theorem}[Envelope Theorem with Constraints]
   Suppose we want to keep track of some subset of parameters, $q \in
   \R^S$. The we can define
   \begin{align}
@@ -40,8 +111,54 @@
   = \frac{\partial f(x(q); q)}{\partial q_s}
   - \sum_{m=1}^M \lambda_m \frac{\partial g_m(x(q); q)}{\partial q_s}
   \]
-
 \end{theorem}
+
+\begin{proof}
+  Again we get from the total derivative of a parametrized function (section
+  \ref{sec:calculus}) that 
+  \[
+  \frac{d \phi(\alpha)}{d \alpha_i}
+  = \frac{\partial f(x(\alpha); \alpha)}{\partial a_i}
+  + \sum_j 
+  \frac{\partial f(x(\alpha);\alpha)}{\partial x_j}
+  \frac{\partial x_j(\alpha)}{\partial \alpha_i}
+  \]
+  but now because we have constraints, we don't necessarily have that
+  the derivative of $f$ evaluated at $x(\bar \alpha)$ is zero. Rather,
+  we have our KT multipliers:
+  \[
+  \frac{\partial f(x(\bar \alpha); \bar \alpha)}{\partial x_j}
+  = \sum_{m=1}^M \lambda_m \frac{\partial g_m(x(\bar\alpha);\alpha)}{\partial x_j}
+  \]
+  which we can substitute into the above and switch the order of the
+  sums to get
+  \[
+  \frac{d \phi(\alpha)}{d \alpha_i}
+  = \frac{\partial f(x(\alpha); \alpha)}{\partial a_i}
+  + \sum_{m=1}^M \lambda_m
+  \left(
+     \sum_j 
+     \frac{\partial g_m(x(\bar\alpha);\alpha)}{\partial x_j}
+     \frac{\partial x_j(\alpha)}{\partial \alpha_i}
+  \right)
+  \]
+  because our constraints hold with equality, we have
+  $g_m(x(\bar\alpha);\alpha) = b_m$, hence we can totally differentiate to get
+  \[
+  0 
+  = \frac{\partial g_m(x(\bar\alpha);\alpha)}{\partial \alpha_i}
+  + \sum_j 
+  \frac{\partial g_m(x(\bar\alpha);\alpha)}{\partial x_j}
+  \frac{dx_j}{d\alpha_i}
+  \]
+  which we can then substitute in to get
+  \[
+  \frac{\partial \phi(\bar \alpha)}{\partial \alpha_i}
+  = \frac{\partial f(x(\bar\alpha);\alpha)}{\partial \alpha_i}
+  - \sum_{m=1}^M\lambda_m 
+  \frac{\partial g_m(x(\bar\alpha);\alpha)}{\partial \alpha_i}
+  \]
+\end{proof}
 
 \begin{definition}[LHC]
   A correspondence $\Gamma:X \to Y$ is lower hemicontinuous (LHC) if
