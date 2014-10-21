@@ -1,0 +1,107 @@
+
+
+\subsection{Cobb-Douglas}
+\label{sec:cobb-douglas}
+
+\begin{definition}[Cobb-Douglas]
+  The $n$-good Cobb-Douglas utility function is
+  \[
+  u(x) = A \prod_{i=1}^N x_i^{\alpha_i}
+  \]
+  where $A > 0$ and $\sum_i \alpha_i = 1$.
+\end{definition}
+
+\subsubsection{Deriving Marhsallian Demand}
+
+Note first that $\log $ is monotone, so maximizing $\log u$ is
+equivalent to maximizing $u$. Hence our UMP is
+\[
+\max_{\{x_i\}} \sum \alpha_i \log x_i \quad s.t. \quad \sum_i p_i x_i = w
+\]
+Note: the budget constraint holds with strict equality since $u$ is
+increasing. Moreover, since $\log 0 = - \infty$, we will have an
+interior solution -- nonzero consumption of $x_i \; \forall i$.
+
+Our Lagrangian for the constrainted maximization is
+\[
+{\cal L} = \sum \alpha_i \log x_i - \lambda(\sum_i p_i x_i - w)
+\]
+which gives the FOCs
+\[
+\frac{\partial {\cal L}}{\partial x_i}
+= \frac{\alpha_i}{x_i} - \lambda p_i
+= 0
+\]
+Thus we have, $\forall i, k$
+\[
+p_i x_i = \frac{\alpha_i}{\alpha_k} p_k x_k
+\]
+which we can substitute into our budget constraint
+\begin{align}
+  \sum_i p_i x_i & = w & \notag \\
+  \sum_i \frac{\alpha_i}{\alpha_k} p_k x_k & = w
+  & \text{substituting from above} \notag \\
+  \frac{p_kx_k}{\alpha_k} \sum \alpha_i & = w & \notag \\
+  \frac{p_kx_k}{\alpha_k} & = w 
+  & \sum_i \alpha_i = 1 \; \text{by assumption} \notag \\
+  x_k(p, w) & = \frac{\alpha_k w}{p_k} & \notag
+\end{align}
+which is true for each of our goods. It is immediately clear that this
+is homogenous of degree $1$ in both prices and income. Additionally,
+we can quickly verify that the income elasticity of demand is $1$:
+\[
+\frac{\partial x_j(p,w)}{\partial w} \frac{w}{x_k(p,w)}
+= \frac{\alpha_k}{p_k} \frac{w}{\frac{\alpha_k w}{p_k}}
+= 1
+\]
+
+\subsubsection{Deriving Indirect Utility}
+
+We obtain the indirect utility function by simple substituting the
+Marshallian demand into the direct utility function, i.e.
+\begin{align}
+  v(x(p, w)) & = \prod_i x_i^{\alpha_i} & \notag \\
+  & = \prod_i \left(\frac{\alpha_i w}{p_i}\right)^w & \notag \\
+  & = \prod_i w^{\alpha_i} \left(\frac{\alpha_i}{p_i}\right)^{\alpha_i} & \notag \\
+  & = w^{\sum_i \alpha_i} \prod_i \left(\frac{\alpha_i}{p_i}\right)^{\alpha_i} & \notag \\
+  & = w \prod_i \left(\frac{\alpha_i}{p_i}\right)^{\alpha_i} & \sum_i \alpha_i = 1 \notag 
+\end{align}
+
+
+\subsubsection{Computing Expenditure Function}
+
+Consider a fixed price vector $p$. And let 
+\[
+C := \prod_i \left(\frac{\alpha_i}{p_i}\right)^{\alpha_i}
+\]
+which is a constant at prevailing prices. Then the utility I get at
+each level of expenditure/wealth is
+\[
+v(w) = Cw
+\]
+hence the minimum expenditure $w$ to get $u$ utility is $\frac{u}{C}$. 
+Hence 
+\begin{align}
+  e(p,u) & = \frac{u}{C} & \notag \\
+  & = u \prod_i \left(\frac{p_i}{\alpha_i}\right)^{\alpha_i} & \notag
+\end{align}
+
+
+
+\subsubsection{Computing Hicksian Demand}
+
+We know that $h(p, u) = x(p, e(p,u))$. Hence
+\begin{align}
+  h_i(p,u) & = x_i(p, e(p,u)) & \notag \\
+  & = \frac{\alpha_i e(p, u)}{p_i} & \notag \\
+  & = \frac{\alpha_i}{p_i} \cdot
+  u \prod_i \left(\frac{p_i}{\alpha_i}\right)^{\alpha_i} & \notag
+\end{align}
+
+\subsection{Leontif}
+\label{sec:leontif}
+
+
+\subsection{CES}
+\label{sec:ces}
+

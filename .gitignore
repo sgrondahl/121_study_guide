@@ -1,5 +1,7 @@
 *
 !*.pdf
 !*.tex
+!*.svg
+!*.xml
 !.gitignore
 !*/
