@@ -1,0 +1,204 @@
+
+
+Our goal is to estimate \textit{indidivual} demand $x =
+f(p,w)$. Rationality imposes some restrictions (Slutsky symmetry, HOD
+0, Walras' Law), but still goods space is very high dimensional. In
+general, we can think of goods in two ways:
+
+\begin{itemize}
+\item[(product space)] consider specific types of products
+\item[(characteristic space)] consider characteristics of goods to
+  reduce dimensionality
+\end{itemize}
+
+\subsection{Goods in Product Space}
+\label{sec:goods-product-space}
+
+\subsubsection{Product Grouping}
+\label{sec:product-grouping}
+
+We can divide goods into groups, and then assume the consumer employs
+multi-stage budgeting: first she allocates expenditures across groups,
+then she allocates expenditure within groups. If demand is weakly
+separable, i.e. $u(x) = U(u_1(g_1), \dots u_n(g_n))$, then demand
+within a group is independent of prices outside the group (Deaton and
+Muelbauer (1980)).
+
+We can also approach grouping goods as imposing price restrictions, as
+we did on the second problem set. In this case, we consider two groups
+of goods $x$ and $y$ with price vectors $p$ and $q$, respectively. If
+we assume that prices $q$ move in unison, i.e. $q = \alpha q_0$, then
+we can consider the group $y$ as a \textit{single composite good} $z =
+q_0 \cdot y$ and redefine the utility function to get
+\[
+\tilde u(x, z) = \max_y u(x,y) \quad s.t. \quad q_0 \cdot y \leq z
+\]
+The interpretation for the above is that $z$ is the amount spent on
+group $y$, and for each level of expenditure $z$ we maximize utility
+over within-group bundle $y$. Hence we have a two stage selection --
+first group-level expenditure then within group expenditure. In the
+problem set, we proved that under the assumptions this approach is
+dual to directly maximizing over $x$ and $y$ subject to the budget
+constraint, i.e. an allocation $(x,y)$ is a solution to the
+compositive goods problem if and only if it is also a solution to the
+direct maximization problem 
+\[
+\max_{x,y} f(x,y) \quad s.t. \quad p \cdot x + q \cdot y \leq w
+\]
+
+\subsubsection{Restricting Preferences}
+\label{sec:restr-pref}
+
+We can also improve tractibility of demand estimation by imposing
+functional form assumptions on preferences. In particular, we consider
+the following:
+
+\begin{definition}[Quasi-Homothetic Demand]
+  Demand is quasi-homothetic if it takes the following form:
+  \[
+  x(p,w) = \alpha(p) + w \cdot \beta(p)
+  \]
+\end{definition}
+
+\begin{prop}[Gorman 1961]
+  Demand is quasi-homothetic if and only if the expenditure function
+  takes the form:
+  \[
+  e(p, u) = a(p) + u\cdot b(p)
+  \]
+  where $a(p)$ and $b(p)$ are homogenous of degree $1$.
+\end{prop}
+
+Note: Gorman form is particularly convenient because we have
+established an explicit relation between $\alpha, \beta$ and $a,b$
+(see section \ref{sec:gorman-polar-form}, hence once we estimate
+demand we are automatically handed the Hicksian without having to
+solve an ugly system of ODEs, thus allowing us to easily do welfare
+calculations.
+
+
+A special case of quasi-homothetic preferences with gives explicit
+functional form is Stone-Geary Preferences:
+
+\begin{definition}[Stone-Geary Preferences]
+  Stone-Geary preferences are represented by a utility function of the form
+  \[
+  u(x_1, \dots, x_L) = \prod_{i=1}^L(x_i - \gamma_1)^{\beta_i}
+  \]
+  with
+  \[
+  \sum_i \beta_i = 1
+  \]
+\end{definition}
+
+Note that Cobb-Douglas utility is a special case of the above with
+$\gamma_i = 0$.
+
+\begin{prop}
+  Stone-Geary preferences generate Marshallian demand
+  \[
+  x(p,w) \; : \; p_ix_i = p_i\gamma_i + \beta_i(w - \sum_j p_j\gamma_j)
+  \]
+  and Hicksian demand
+  \[
+  h(p,u) \; : \; p_ih(p, u_0) = p_i\gamma_i + \beta_i\beta_0 \prod_jp_j^{\beta_j}u_0
+  \]
+  where $\beta_0$ is a function of the parameters. Note that the
+  amount spent is \textbf{linear} in both price and wealth, hence this
+  is also known as the linear demand system. The expenditure function,
+  which can be used for welfare analysis, is
+  \[
+  e(p,u) = \sum_j p_j\gamma_j + \beta_0 \prod_j p_j^{\beta_j}u_0
+  \]
+\end{prop}
+
+\subsubsection{Almost Ideal Demand System (AIDS)}
+\label{sec:almost-ideal-demand}
+
+Deaton and Muelbauer (1980) model expenditure functions as
+quasi-homothetic:
+\[
+\log e(p,u) = a(p) + ub(p)
+\]
+which implies shares of the form
+\[
+s_i 
+= \frac{p_ix_i}{w}
+= A_i(p) + B_i(p) \log w
+\]
+
+Without getting into specifics, the AIDS model is good because it is
+very flexible: in general, the AIDS system is a \textbf{first-order
+  approximation} to any demand system. Moreover, since it is a system
+of expenditure functions, it is easy to do welfare analysis, and is
+realtively easy to aggregate over consumers. The downside (``almost
+ideal'') is that there are way too many parameters that show up once
+we write down Deaton and Muelbauer's proposed functional forms. The
+parameters $\gamma_{ij}$ are cross price elasticities, thus if we can
+impose restrictions on these we can get a more tracible result.
+
+\subsection{Goods in Characteristic Space}
+\label{sec:goods-char-space}
+
+Good are seen as bundles of characteristics and consumers derive
+utility from these characteristics and some idiosyncratic taste.  That
+is, there are many products, with each product being a unique
+combination of different characteristics, and each sumer will choose
+the single option that maximizes utility. These models are often
+called discrete choice models (choosing either to buy or not to buy),
+or ``random utility'' models, because utility is described as a random
+variable reflecting unobserved taste differences. Luce first
+formalized this class of models with three axioms: (1) choice
+probability is strictly greater than zero for all choices, (2) IIA,
+(3) separability.
+
+To gain tractibility, we consider \textbf{logit} models. The standard
+multinomial logit model assumes $\epsilon_{ij}$ is iid according to
+the Extreme Value Type I distribution, $F(\epsilon) =
+\exp\{-e^{-\epsilon}\}$. This is due to McFadden (1973) and allows us
+to use the Luce (logit) model with random utility, and thus we can
+estimate Luce values as a function of observed characteristics. If we
+suppose the direct utility individual $i$ gets from product $j$ is
+$U_{ij} = V_{ij} + \epsilon_{ij}$, and we let $d_{ij} = 1$ if the
+individual $i$ chooses product $j$ and $0$ otherwise, we get the nice
+functional form
+\[
+P(d_{ij} = 1) 
+= \frac{\exp(V_{ij})}{\sum_{k} \exp(V_{ik})}
+\]
+
+
+The issue is that logit relies very heavily on the Independence of
+Irrelevant Alternatives (IIA) property, i.e. that the odds of choosing
+$j$ over $k$ is independent of which other alternatives are available,
+i.e.
+\[
+\frac{P(d_{ij} = 1)}{P(d_{ik}=1)} = \frac{e^{V_{ij}}}{e^{V_{ik}}} \; \forall j,k
+\]
+
+However, this is a very strong restriction, and is often
+violated. Suppose there are three options to get to school: (1) drive,
+(2) take the red bus, (3) take the blue bus. Assume further that the
+red/blue bus are otherwise identical (except for color) so they
+generate the same utility for me. Suppose then the choice
+probabilities are $(0.50, 0.25, 0.25)$ (I am indifferent between the
+busses, so I just split my $P(bus) = 0.5$ evenly among them). IIA
+would require
+\[
+\left. \frac{P(car)}{P(red bus)} \right|_{3 choices}
+\left. \frac{P(car)}{P(red bus)} \right|_{2 choices}
+= \frac{2}{1}
+\]
+thus when I remove the blue bus, it would require the choice
+probabilities be $(0.66, 0.33)$. But in reality because I didn't
+really care, we would intuitively expect them to be $(0.5, 0.5)$,
+i.e. now that the blue bus is gone I still want to ride the bus $50\%$
+of the time, but now I'll just ride the red bus whenever I decide to
+bus it (since I don't care about the color).
+
+We can get away from IIA by trying different functional forms (GEV
+functional form), nested logits (partition goods into nests, then
+choices are MNL conditional on being in a nest, while choices across
+nests have logit form), or mixed logits (allow consumer preferences to
+deviate from broad population preferences -- sometimes called random
+coefficients logit).

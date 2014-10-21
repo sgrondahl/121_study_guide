@@ -1,0 +1,50 @@
+
+
+
+\begin{definition}[Total Derivative]
+  Consider the function $f(x(t), t)$, where one (or more) of the
+  arguments varies in another argument. The total derivative of the
+  function is given by
+  \[
+  \frac{df}{dt} 
+  = \frac{\partial f}{\partial t} \frac{dt}{dt}
+  + \frac{\partial f}{\partial x(t)} \frac{dx(t)}{dt}
+  = \frac{\partial f}{\partial t} 
+  + \frac{\partial f}{\partial x(t)} \frac{dx(t)}{dt}
+  \]
+\end{definition}
+
+\begin{definition}[Chain Rule]
+  In order to differentiate a composite function $f(g(x))$, the chain
+  rule gives
+  \[
+  [D f \circ g(x)] = [Df(g(x))][Dg(x)]
+  \]
+  where the first term is the derivative of $f$ evaluated at $g(x)$
+  and the second term is the derivative of $g$ evaluated at $x$.
+\end{definition}
+
+\begin{prop}[Total Derivative of Parametrized Function]
+  Consider the function parametrized by $\alpha$, $f(x; \alpha)$, and
+  let 
+  \[
+  \phi(\alpha) = \max_x f(x; \alpha)
+  \]
+  \[
+  x(\alpha) = \arg \max_x f(x; \alpha)
+  \]
+  then the total derivative of $\phi$ with respect to each component
+  of $\alpha$ is given by
+  \[
+  \frac{d \phi(\alpha)}{d \alpha_i}
+  = \frac{\partial f(x(\alpha); \alpha)}{\partial a_i}
+  + \sum_j 
+  \frac{\partial f(x(\alpha);\alpha)}{\partial x_j}
+  \frac{\partial x_j(\alpha)}{\partial \alpha_i}
+  \]
+\end{prop}
+
+\begin{proof}
+  This follows directly from applying the complete derivative to
+  $\phi$ and then the chain rule when differentiating $x$.
+\end{proof}
