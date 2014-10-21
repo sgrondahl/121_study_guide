@@ -98,10 +98,94 @@ We know that $h(p, u) = x(p, e(p,u))$. Hence
   u \prod_i \left(\frac{p_i}{\alpha_i}\right)^{\alpha_i} & \notag
 \end{align}
 
-\subsection{Leontif}
+\subsection{Leontief}
 \label{sec:leontif}
+
+\begin{definition}[Leontief Preferences]
+  Leontief preferences are given by
+  \[
+  x'' \succeq x' \iff \min\{x_i''\} \geq \min\{x_i'\}
+  \]
+\end{definition}
+
+Note: Leontief preferences are a case of preferences that are
+representable by a continuous utility function, but no differentiable
+utility function can represent them. The issue is at the kink where
+$x_i = x_j$ for all components. In the case of two components, the
+indifference curves are $L$ shaped. Note that Leontief preferences
+\textit{are} quasiconcave, but are not strictly quasiconcave.
 
 
 \subsection{CES}
 \label{sec:ces}
 
+\begin{definition}[CES Utility]
+  The CES (Constant Elasticity of Substitution) utility function is given by
+  \[
+  u(x) = \sum_{i=1}^n \alpha_i x_i^\gamma
+  \]
+  with $\gamma \in [0,1]$ and $\alpha_i > 0$.
+\end{definition}
+
+\subsubsection{Deriving the Marshallian Demand}
+
+Now the consumer's problem is 
+\[
+\max_{\{x_i\}} \sum \alpha_i x_i^\gamma \quad s.t. \quad \sum_i p_i x_i = w
+\]
+which gives the Lagrangian
+\[
+{\cal L} = \sum \alpha_i x_i^\gamma - \lambda\left[\sum_i p_ix_i - w\right]
+\]
+(since utility is increasing in $x$ we have strict equality on the
+constraint).
+
+We can differentiate to get the FOC on each $x_i$
+\[
+\gamma\alpha_ix_i^{\gamma-1} - \lambda p_i = 0
+\implies \lambda = \frac{\gamma \alpha_i}{p_i} x_i^{\gamma-1}
+\]
+hence
+\begin{align}
+  \lambda & = \lambda & \notag \\
+  \frac{\gamma \alpha_i}{p_i} x_i^{\gamma-1} 
+  & = \frac{\gamma \alpha_k}{p_k} x_k^{\gamma-1} & \notag \\
+  x_i^{\gamma-1} &= 
+  \left(\frac{\alpha_i}{p_i}\right)^{-1}
+  \left(\frac{\alpha_k}{p_k}\right)
+  x_k^{\gamma-1} & \notag \\
+  x_i & = 
+  \left(\frac{\alpha_i}{p_i}\right)^{\frac{-1}{\gamma-1}}
+  \left(\frac{\alpha_k}{p_k}\right)^{\frac{1}{\gamma-1}}
+  x_k & \notag
+\end{align}
+which we can substitute into our budget constraint
+\begin{align}
+  \sum_i p_i x_i & = w & \notag \\
+  \sum_i p_i \left(   
+    \left(\frac{\alpha_i}{p_i}\right)^{\frac{-1}{\gamma-1}}
+    \left(\frac{\alpha_k}{p_k}\right)^{\frac{1}{\gamma-1}}
+    x_k 
+  \right) & = w & \text{substituting from above} \notag \\
+  x_k \left(\frac{\alpha_k}{p_k}\right)^{\frac{1}{\gamma-1}}
+  \sum_i p_i \left(\frac{\alpha_i}{p_i}\right)^{\frac{-1}{\gamma-1}} & = w & \notag \\
+  x_k(p,w) & 
+  = \frac{
+    \left(\frac{p_k}{\alpha_k}\right)^{\frac{1}{\gamma-1}}
+  } {
+    \sum_i p_i \left(\frac{p_i}{\alpha_i}\right)^{\frac{1}{\gamma-1}}
+  } & \notag
+\end{align}
+which gives our Marshallian demand.
+
+Note that the general trick here is that we set the Lagrange
+multipliers equal to themselves (we only have a single constraint),
+then then solve for a general $x_i$ in terms of some fixed $x_k$. We
+then substitute this into our budget constraint to get $x_k$ only as a
+function of prices, wealth, and the parameters of the utility function.
+
+
+For more information, or for further functional forms analysis, see
+the file ``Consumer\_Theory\_Functional\_Forms.pdf'' in the parent
+directory of these notes. These are not, however, required for the
+exam.

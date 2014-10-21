@@ -93,8 +93,47 @@ state spaces.
   \]
 \end{definition}
 
-Note: see the proofs we did regarding supermodularity on the problem
-set! Those are especially useful here.
+\begin{definition}[Submodularity]
+  A function $f$ is submodular if $-f$ is supermodular.
+\end{definition}
+
+\begin{prop}
+  A differentiable function $f$ is supermodular if and only if
+  \[
+  \frac{\partial^2 f}{\partial x_i \partial x_j} \geq 0
+  \quad \forall i \neq j
+  \]
+
+ Similarly, a differentiable function $f$ is submodular if and only if
+  \[
+  \frac{\partial^2 f}{\partial x_i \partial x_j} \leq 0
+  \quad \forall i \neq j
+  \]
+\end{prop}
+
+\begin{definition}[Substitutes]
+  Inputs $x_i$ and $x_j$ to an objective function $f$ are substitutes
+  at input vector $x$ if $f$ is submodular in these arguments when
+  evaluated locally around $x$ (i.e. all other inputs are fixed at
+  their levels in $x$). In the special case where $f$ is
+  differentiable, this is captured by
+  \[
+  \frac{\partial^2 f}{\partial x_i \partial x_j} \leq 0
+  \]
+\end{definition}
+
+The intuition behind this definition of substitutes is that
+submodularity implies decreasing differences, so for a fixed level of
+output, I could slightly decrease one input, then increase the other
+input, and then the amount by which I would have to increase the first
+input in order to meet the fixed level of output would be lower than
+the amount by which I decreased it initially, hence I can get away
+with a lower absolute level of the first input by increasing the level
+of the second input, which is the very idea of substitutes.
+
+
+** TODO see the proofs we did regarding supermodularity on the problem
+set! Those are especially useful here. **
 
 \subsection{Topkis}
 \label{sec:topkis}
@@ -182,8 +221,32 @@ The usefulness of the Monotonic Selection theorem is that we can make
 a statement about comparative statics that is robust to arbitrarily
 selecting/restricting the feasible set $\bar X \subset X$.
 
-\subsection{Long Run versis Short Run Response}
+\subsection{Long Run versus Short Run Response}
 \label{sec:LR-SR}
+
+\subsubsection{Rough Idea}
+
+There are an interesting set of economic models where the long-run
+responses to price changes are larger than short run responses. The
+key idea is some sort of ``positive feedback'' argument.
+
+First, we start with some production function $f(k, l)$ where inputs
+are substitutes. We then assume taht in the short run $k$ is fixed, so
+when wages increase labor falls in the short run (and so does output),
+but capital is fixed. In the long run, since the inputs are
+substitutes and before the wage change I was indifferent between an
+extra unit of $k$ versus $l$, now with the wage change I prefer the
+additional unit of $k$ so I will tend to increase $k$ in the long
+run. But since they are substitutes, the long run increase in $k$
+lowers the marginal product of labor, so $l$ further decreases in the
+long run. Hence the LR effect is larger than SR due to capital
+flexibility. Note that if $k$ and $l$ were complements the opposite
+effect would take place, but still LR effects are greater than in SR.
+
+
+\subsubsection{Formalization}
+
+
 
 Samuelson suggested that a firm would react more to input price
 changes in the long-run than in the short-run because it has more
