@@ -1,4 +1,158 @@
 
 
+Recall that SWT requires such great information to construct
+supporting prices, that we question why given so much information why
+we wouldn't just control the economy directy (why do we need prices?).
+Market mechanism works by using prices to give people concise
+sufficient statistics allowing them to make coordinated choices and
+arrive at a socially optimal allocation.
+
+The general approach regarding prices is to formalize the statement
+that it is impossible to have a mechanism verifying a Pareto optimal
+allocation without revealing a supporting Walrasian equilibrium (or
+common marginal rates of substitution, which gives supporting prices)
+This provides a formalization of the necessity of price revelation for
+informational reasons.
 
 
+\subsection{Microfoundations and the Core}
+\label{sec:micr-core}
+
+\begin{definition}[Core]
+  The core is the set of all allocations such that no coalition (set
+  of agents) can improve on or block the allocation (make all of its
+  members better off) by seceding from the economy and only trading
+  among its members.
+\end{definition}
+
+Note that the core is an institution free concept, and does not
+require prices.
+
+Our central result is that for economies with a large number of
+agents, core allocations are ``approximately Walrasian.'' This gives a
+positive foundation for price taking. Core convergence and
+nonconvergence allows us to identify situations in which price-taking
+is more or less reasonable.
+
+
+\begin{definition}[Coalition]
+  In an exchange economy, a coalition is a set $S \subset I$ of agents.
+\end{definition}
+
+\begin{definition}[Blocking Coalition]
+  A coalition $S$ blocks/improves on an allocation $x$ by $\hat x$ if 
+  \[
+  \forall i \in S, \; \hat x^i \succeq_i x^i
+  \]
+  with at least one preference strict, subject to the constraint
+  \[
+  \sum_{i \in S} \hat x^i = \sum_{i \in S} \omega^i
+  \]
+\end{definition}
+
+\begin{definition}[Core]
+  The core (by weak domination) is the set of all allocations which
+  cannot be blocked/improved on by any coalition.
+\end{definition}
+
+\begin{prop}
+  In an exchange economy, every core allocation is Pareto optimal.
+\end{prop}
+
+\begin{prop}
+  In an exchange economy, every Walrasian Equilibrium lies in the
+  core.
+\end{prop}
+
+Note that this adds strength to the FWT, since it says that no group
+(not just individual) can be made better off!
+
+Recall that in the two consumer Edgeworth box, every allocation in the
+contract curve is in the core, but only one is a Walrasian
+allocation. However, as we increase the size of the economy, the
+non-Walrasian allocations gradually drop from the core until in the
+limit only the Walrasian allocations are left.
+
+\subsection{Core Convergence}
+\label{sec:core-convergence}
+
+\begin{definition}[Type]
+  The set of types of consumers is ${\cal I} = \{1, \dots, I\}$.
+\end{definition}
+
+\begin{definition}[R-Replica Economy]
+  The R-replica economy ${\cal E}_R$ is one with $R$ consumers ofeach
+  type, hence the tptal number of consumers is $R \cdot I$.
+\end{definition}
+
+\begin{definition}[Allocation]
+  An allocation in the R-replica economy is a set $(x^{i,r}) \in
+  R^{LRI}_+$, where $x^{i,r}$ is the bundle of the $r^{th}$ consumer
+  of type $i$. The budget constraint in this case is
+  \[
+  \sum_{i \in {\cal I}} \sum_{r=1}^R x^{i,r} = R \sum_{i \in {\cal I}} \omega^i
+  \]
+\end{definition}
+
+
+\begin{prop}[Equal Treatment]
+  Suppose consumers have strictly convex preferences. If $x$ is a core
+  allocation in ${\cal E}_R$, then $x^{i,r} = x^{i,r'} \; \forall r,
+  r'$ (i.e. consumers of the same type consume the same bundle).
+\end{prop}
+
+Hence we can regard core allocations as vectors of fixed size $LI$,
+irrespective of the replica we are concerned with.
+
+\begin{definition}[Type Allocation]
+  The type allocation for any replica $R$ is given by
+  \[
+  (x_1, \dots, x_{I}) \in \R^{LI}_+
+  \]
+  where $x_i$ is the equal treatment allocation for each consumer of
+  type $i$.
+\end{definition}
+
+\subsubsection{Constructing a Walrasian Equilibrium from the Core}
+\label{sec:constr-walr-equil}
+
+\begin{theorem}[Debreu-Scarf 1963]
+  Let $C_R \subset \R^{LI}_+$ denote the set of type allocations
+  corresponding to the equal treatment core allocations in the
+  $R$-replica economy. Then
+  \[
+  \cap_R C_R = W
+  \]
+  i.e. if $x^* \in C_R \; \forall R$, then $x^*$ is Walrasian.
+\end{theorem}
+
+\begin{proof}
+  Let $C_R$ be as above, and let $W_R \subset \R^{LI}_+$ denote the
+  type allocations corresponding to the equal treatment Walrasian
+  allocations of the $R$-replica economy.
+
+  \textbf{Observation 1.} Suppose coalition $S$ has an objection
+  against a type allocation $x$ in the $R$-replica. Then the same is
+  true in the $R+1$ replica, which implies
+  \[
+  C_{R+1} \subseteq C_R \; \forall R
+  \]
+
+  \textbf{Observation 2.} If a type coalition $x$ is Walrasian in the
+  $R$-replica, it is also $Walrasian$ in the $R+1$ replica and vice
+  versa:
+  \[
+  W_R = W_{R+1} = W \; \forall R
+  \]
+
+  \textbf{Observation 3.} By our earlier proposition
+  \[
+  W \subset C_R \; \forall R
+  \]
+
+  In combination, these observations generate
+  \[
+  W \subseteq \dots \subseteq C_{R+1} \subseteq C_R \subseteq \dots
+  \subseteq C_1
+  \]
+\end{proof}
