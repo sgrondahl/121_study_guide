@@ -1,0 +1,70 @@
+
+
+
+
+
+\subsection{Housing Market: Basic Exchange Economy}
+\label{sec:hous-mark-basic}
+
+\begin{definition}[Housing Market]
+  A housing market is a list $((a_k, h_k)_{k \in 1, \dots, n}, P)$
+  with $a_k$ agent $k$ who intially owns house $h_k$. Each agent has
+  strict partial preference ordering $P_a$ over houses. Let $R_a$ be
+  the weak preference relation associated with these strict
+  preferences.
+\end{definition}
+
+\begin{definition}[Allocation]
+  An allocation in a housing market is a matching $\mu : A \to H$, a
+  bijective function with house $\mu(a)$ the house assigned to agent
+  $a$.
+\end{definition}
+
+\begin{definition}[Pareto Efficient]
+  A matching $\mu$ is Pareto efficient if there is no other matching
+  $\nu$ such that $\nu(a) R_a \mu(a) \; \forall a \in A$, and $\nu(a)
+  P_a \mu(a)$ for some agent $a \in A$.
+\end{definition}
+
+\begin{definition}[Core]
+  The core is the set of matchings $\mu$ such that $\nexists $
+  coalition $B \subset A$ and matching $\nu$ such that 
+  \begin{enumerate}[(a)]
+  \item $\forall a \in B, \nu(a) = a_l$ for some $a_l \in B$, and
+  \item $\forall a \in B, \nu(a) R_a \mu(a)$ and $\exists a \in B :
+    \nu(b) P_a \mu(a)$
+  \end{enumerate}
+  (i.e. it can't be the case that the coalition can exchange homes
+  without its initial endowment to improve itself).
+\end{definition}
+
+    
+A housing market can be thought of as a non-transferable utility (NTU)
+cooperative game. For these types of games, the core is the central
+solution concept for NTU-cooperative games.
+
+
+\begin{definition}[Individually Rational]
+  A matching is individually rational if every agent receives a house
+  at least as good as her initial house.
+\end{definition}
+
+\begin{prop}
+  A core matching is individually rational \textit{and} Pareto efficient. 
+\end{prop}
+
+\begin{proof}
+  For the former, consider the set of coalitions of singletons. For
+  the latter, consider the grand coalition.
+\end{proof}
+
+\begin{theorem}[Shapley-Scarf 1974]
+  The core is nonempty for each housing market and it is unique.
+\end{theorem}
+
+\begin{proof}
+  Constructive: use Gale's Top Trading Cycles (TTC) algorithm. ** TODO **
+\end{proof}
+
+
+** TODO: just see lecture notes here **

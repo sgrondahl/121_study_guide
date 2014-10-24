@@ -48,10 +48,14 @@
   \begin{itemize}
   \item[(Engel aggregation)] $ \sum_{i=1}^n s_i \eta_i = 1$,
     i.e. total expenditure must change by an amount equal to any
-    wealth change
+    wealth change. This is equivalently stated as $\sum \frac{\partial
+      x_i(p,w)}{\partial w} p_i = 1$, which comes from differentiating
+    the budget constraint wrt $w$.
   \item[(Cournot aggregation)] $ \sum_{i=1}^n s_i \epsilon_{ij} =
     -s_j$, i.e. total expenditure cannot change in response to change
-    in price
+    in price. Equivalently, $\sum p_i \frac{\partial
+      x_i(p,w)}{\partial p_j} = - x_j(p,w)$ which comes from
+    differentiating the budget constraint wrt $p_j$.
   \end{itemize}
 \end{prop}
 
@@ -92,5 +96,30 @@
   }
   \]
 \end{prop}
+
+\begin{proof}
+  This is a simple application of the Envelope Theorem. Recall the
+  indirect utility function is given by
+  \[
+  v(p,w) = \max_x u(x) \quad s.t. \quad p \cdot x \leq w
+  \]
+  and since we only have one constraint that binds with equality, we
+  have a single strictly positive multiplier $\lambda$. Let $x(p,w)$
+  be the maximizing correspondence, and note that at the optimum
+  \[
+  \frac{\partial u(x(p,w))}{\partial p_i}
+  = \frac{\partial u(x(p,w))}{\partial w}
+  = 0
+  \]
+  so applying the Envelope Theorem we get
+  \[
+  \frac{\partial v(p,w)}{\partial p_i} = -\lambda x_i
+  \]
+  and
+  \[
+  \frac{\partial v(p,w)}{\partial w} = \lambda 
+  \]
+  so when we take the ratio we get the desired result.
+\end{proof}
 
 For examples, see 3.D.1 (p. 55 MWG).

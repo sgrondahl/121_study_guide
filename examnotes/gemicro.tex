@@ -64,6 +64,29 @@ is more or less reasonable.
   core.
 \end{prop}
 
+\begin{proof}
+  Let $(x^*, p^*) \in W({\cal E})$ and suppose $(x^*, p^*) \not\in
+  C({\cal E})$. The there exists coalition $S \subset I$ such that for
+  all $i \in S$, $x^{i'} \succeq^i \omega^i$ (with one inequality
+  strict). Hence it must be the case that these new allocations are
+  unaffordable at $p^*$, else they would be the Walrasian equilibrium,
+  hence $p^* \cdot x^{i'} \geq p^* \cdot \omega^i$ with the inequality
+  strict for one guy. We can sum over the guys in the coalition to get
+  \[
+  \sum^i p^* \cdot x^{i'} > \sum^i p^* \cdot \omega^i
+  \]
+  hence for some good $l$
+  \[
+  \sum_i p^*_l \cdot x^{i'}_l > \sum_i p^*_l \omega^i_l
+  \]
+  and since prices are nonnegative, it must be the case that
+  \[
+  \sum_i x^{i'}_l > \sum_i \omega^i_l
+  \]
+  which violates the resource constraint on the coalition, completing
+  the proof.
+\end{proof}
+
 Note that this adds strength to the FWT, since it says that no group
 (not just individual) can be made better off!
 

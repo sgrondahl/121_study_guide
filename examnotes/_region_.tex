@@ -1,20 +1,351 @@
-\message{ !name(appliedconsumer.tex)}
-\message{ !name(appliedconsumer.tex) !offset(207) }
-\frac{\partial x^j_i(p, w^j)}{\partial w^j}
-  \]
-  $\forall$ goods $i$, and $\forall$ individuals $j,k$. The
-  requirement is that wealth effects are the same across all
-  individuals and across all wealth levels.
-\end{prop}
+\message{ !name(monotone.tex)}
+\message{ !name(monotone.tex) !offset(-2) }
 
-\begin{definition}[Quasi-Homothetic Preferences]
-  Quasi-homothetic preferences give demands as
-  \[
-  x^k(p, w^k) = \alpha^k(p) + w^k \beta(p)
-  \]
-  where $\alpha^k$ is a person specific function but $\beta$ is
-  common/identical across people.
+
+\subsection{Motivation}
+\label{sec:motivation}
+
+We are now concerned with comparative statics, that is, given some
+maximization problem
+\[
+\max_{x} f(x; \theta)
+\]
+we want to know both how the maximum value ($v$) and the maximizing
+argument ($x$) depend upon $\theta$. Assuming all derivatives exist
+and the solution is interior and unique (which we could get, e.g. if
+$f$ is ${\cal C}^2$, and strictly convex), we can apply the implicit
+function theorem since the maximizer uniquely solves
+\[
+f_x(x(\theta), \theta) = 0
+\]
+and we can say locally that
+\[
+\frac{\partial x(\theta)}{\partial \theta}
+= - \frac{f_{x\theta}(x(\theta), \theta)}{f_{xx}(x(\theta),\theta)}
+\]
+but this breaks down if any of the above assumptions fails
+(e.g. differentiability, convexity), and we want our analysis to be
+robust to specifications that might give a different $f$. This
+introduces the idea of ``Robust Comparative Statics'' which seek to
+avoid calculus and find conditions which can be used even if functions
+are nondifferentiable, discontinuous, or even defined on discrete
+state spaces.
+
+
+\subsection{Preliminaries}
+\label{sec:preliminaries}
+
+\begin{definition}[Partial Order]
+  A relation $R$ that satisfies transitivity, reflexivity, and
+  antisymmetry is called a partial order.
 \end{definition}
 
+\begin{definition}[Partially Ordered Set]
+  A partially ordered set, or poset, is a partial order relation
+  together with a set, $(X, R)$. Note that a poset does not require
+  completeness.
+\end{definition}
 
-\message{ !name(appliedconsumer.tex) !offset(-20) }
+\begin{definition}[Meet]
+  The meet operator is defined as follows:
+  \[
+  x \wedge y = \max\{z | xRz, yRz\}
+  \]
+\end{definition}
+
+\begin{definition}[Join]
+  The join operator is defined as follows:
+  \[
+  x \vee y = \min\{z | zRx, zRy\}
+  \]
+\end{definition}
+
+\begin{definition}[Lattice]
+  A lattice is a poset that is closed under meet and join operations.
+\end{definition}
+
+\begin{definition}[Strong Set Order]
+  The strong set order is given by the binary relation
+  \[
+  A \succeq_S B \iff
+  a \vee b \in A, \quad
+  a \wedge b \in B, \quad
+  \forall a \in A, \forall b \in B
+  \]
+\end{definition}
+
+\begin{definition}[Increasing Differences]
+  Let $f$ be a function $f : X \times \Theta \to \R$ where both $X$
+  and $\Theta$ are lattices. Consider $x^H, x^L \in X$, and $\theta^H,
+  \theta^L \in \Theta$ with $x^H \geq_X x^L$ and $\theta^H \geq_\Theta
+  \theta^L$. Then $f$ has increasing differences if
+  \[
+  f(x^H, \theta^H) - f(x^L, \theta^H) \geq
+  f(x^H, \theta^L) - f(x^L, \theta^L)
+  \]
+  this is the same as saying that the difference $f(x^H, \theta) -
+  f(x^L, \theta)$ is weakly increasing in $\theta$.
+\end{definition}
+
+\begin{definition}[Supermodularity]
+  Let $f$ be a function $f : X \to \R$ where $X$ is a lattice. Then
+  $f$ is supermodular if
+  \[
+  f(x^H \vee x^L) + f(x^H \wedge x^L) \geq f(x^H) + f(x^L) \quad
+  \forall x^H, x^L \in X
+  \]
+\end{definition}
+
+\begin{definition}[Submodularity]
+  A function $f$ is submodular if $-f$ is supermodular.
+\end{definition}
+
+\begin{prop}
+  A differentiable function $f$ is supermodular if and only if
+  \[
+  \frac{\partial^2 f}{\partial x_i \partial x_j} \geq 0
+  \quad \forall i \neq j
+  \]
+
+ Similarly, a differentiable function $f$ is submodular if and only if
+  \[
+  \frac{\partial^2 f}{\partial x_i \partial x_j} \leq 0
+  \quad \forall i \neq j
+  \]
+\end{prop}
+
+\begin{definition}[Substitutes]
+  Inputs $x_i$ and $x_j$ to an objective function $f$ are substitutes
+  at input vector $x$ if $f$ is submodular in these arguments when
+  evaluated locally around $x$ (i.e. all other inputs are fixed at
+  their levels in $x$). In the special case where $f$ is
+  differentiable, this is captured by
+  \[
+  \frac{\partial^2 f}{\partial x_i \partial x_j} \leq 0
+  \]
+\end{definition}
+
+The intuition behind this definition of substitutes is that
+submodularity implies decreasing differences, so for a fixed level of
+output, I could slightly decrease one input, then increase the other
+input, and then the amount by which I would have to increase the first
+input in order to meet the fixed level of output would be lower than
+the amount by which I decreased it initially, hence I can get away
+with a lower absolute level of the first input by increasing the level
+of the second input, which is the very idea of substitutes.
+
+
+** TODO see the proofs we did regarding supermodularity on the problem
+set! Those are especially useful here. **
+
+\subsection{Topkis}
+\label{sec:topkis}
+
+\begin{theorem}[Topkis Monotonicity Theorem]
+  Consider an optimization problem of the form
+  \[
+  \max_{x} f(x, \theta)
+  \]
+  and let $x^*(\theta)$ be the maximizer correspondence. If $f(x,
+  \theta)$ has increasing differences, then $x^*(\theta)$ is ewakly
+  increasing in $\theta$.
+\end{theorem}
+
+\begin{prop}
+  Define
+  \[
+  x^{**}(\theta) = \sup\{ \arg \max_x f(x,\theta) + g(x) \}
+  \]
+  Then $x^{**}(\theta)$ is weakly increasing in $\theta$ \textbf{for
+    all $g$} if and only if $f$ has increasing differences.
+\end{prop}
+
+\begin{theorem}[Topkis]
+  Consider an optimization problem of the form
+  \[
+  \max_{x \in D} f(x, \theta)
+  \]
+  where $D$ is a lattice (with order $\succeq_X$) and does not depend
+  on $\theta$. If $f$ exhibits increasing diferences in $(x,\theta)$
+  relative to $(\succeq_X, \succeq_\Theta)$ and is supermodular in $x$
+  (relative to $\succeq_X$), then the optimal choice correspondence
+  $x^*(\theta)$ will be increasing in the strong set order relative to
+  $\succeq_X$ (where an increase in the parameter is relative to
+  $\succeq_\Theta$).
+
+  Under the above conditions, we can conclude that $\forall \theta,
+  \theta' \in \Theta$ with $\theta' \succeq_\Theta \theta$ and
+  $\forall x \in x^*(\theta), x' \in x^*(\theta')$,
+  \[
+  x \wedge x' \in x^*(\theta) \quad \text{and} \quad x \vee x' \in x^*(\theta')
+  \]
+\end{theorem}
+
+
+\subsection{Milgrom-Shannon}
+\label{sec:milgrom-shannon}
+
+\begin{definition}[Single Crossing]
+  A function $f: \R^2 \to \R$ is single crossing in $(x, \theta)$ if
+  $\forall x' > x$ and $\theta' > \theta$,
+  \begin{enumerate}[(i)]
+  \item $f(x', \theta) - f(x, \theta) \geq 0 \implies f(x', \theta') -
+    f(x, \theta') \geq 0$
+  \item $f(x', \theta) - f(x, \theta) > 0 \implies f(x', \theta') -
+    f(x, \theta') > 0$
+  \end{enumerate}
+
+  We say the single crossing is strict if $f(x', \theta) - f(x,
+  \theta) \geq 0 \implies f(x', \theta') - f(x, \theta') > 0$.
+\end{definition}
+
+Note that unlike increasing differences, this condition is not
+symmetric in the variables $(x, \theta)$.
+
+\begin{prop}
+  If $f$ has increasing differences then it is also single crossing,
+  but the converse is not true.
+\end{prop}
+
+\begin{prop}[Milgrom-Shannon Monotonic Selection Theorem]
+  Define
+  \[
+  x^*(\theta, \bar X) := \arg \max_{x \in X} f(x, \theta)
+  \]
+  If $f$ is single-crossing in $(x, \theta)$, then $x^*(\theta, \bar
+  X)$ is weakly increasing in $\theta \; \forall \bar X \subset X$.
+
+  Moreover, if $x^*(\theta, \bar X)$ is non-decreasing in $\theta$ for
+  all finite sets $\bar X \subset \R$, then $f$ is single-crossing in
+  $(x, \theta)$.
+\end{prop}
+
+The usefulness of the Monotonic Selection theorem is that we can make
+a statement about comparative statics that is robust to arbitrarily
+selecting/restricting the feasible set $\bar X \subset X$.
+
+\subsection{Applications in Producer Theory}
+\label{sec:appl-prod-theory}
+
+\begin{prop}
+  Suppose a firm faces the cost minimization problem
+  \[
+  \max_{k \in K} -rk - wl \quad s.t. \quad F(k,l) \geq q
+  \]
+  then the optimal choice of capitak $k^*(r,w,q)$ is weakly decreasing
+  in $r$.
+\end{prop}
+
+\begin{prop}
+  Now suppose instead of prices, the firm is adjusting its capital in
+  response output $q$, but now required labor is a function of $k$ and
+  $q$
+  \[
+  \max_k -rk - wL(k,q)
+  \]
+  and $k^*(r,w,q)$ is weakly increasing in $q$ if $-L(k,q)$ has
+  increasing differences.
+\end{prop}
+
+This proposition is difficult to interpret. Note the $L$ is the
+function such that $F(k, L(k,q)) = q$. The core idea is that starting
+from a fixed level of capital, the amount of labor required to
+substitute for a small decreas in capital while holding output fixed
+increases as the desired level of output increases.
+
+Now we turn our attention to a much more interesting problem: cross
+price effects in the firm's profit maximization problem. In
+particular, we want to know what happens to $k$ as $w$ changes.
+
+\begin{definition}[Substitutes and Complements]
+  $k$ and $l$ are substitutes in production if $F(k,l)$ has decreasing
+  differences. $k$ and $l$ are complements in production if $F(k,l)$
+  has increasing differences.
+\end{definition}
+
+We now turn to a few common examples. In the case of twice
+continuously differentiable functions, we can evaluate the second
+derivative and check the sign directly.
+
+
+
+
+
+\subsection{Long Run versus Short Run Response}
+\label{sec:LR-SR}
+
+\subsubsection{Rough Idea}
+
+There are an interesting set of economic models where the long-run
+responses to price changes are larger than short run responses. The
+key idea is some sort of ``positive feedback'' argument.
+
+First, we start with some production function $f(k, l)$ where inputs
+are substitutes. We then assume taht in the short run $k$ is fixed, so
+when wages increase labor falls in the short run (and so does output),
+but capital is fixed. In the long run, since the inputs are
+substitutes and before the wage change I was indifferent between an
+extra unit of $k$ versus $l$, now with the wage change I prefer the
+additional unit of $k$ so I will tend to increase $k$ in the long
+run. But since they are substitutes, the long run increase in $k$
+lowers the marginal product of labor, so $l$ further decreases in the
+long run. Hence the LR effect is larger than SR due to capital
+flexibility. Note that if $k$ and $l$ were complements the opposite
+effect would take place, but still LR effects are greater than in SR.
+
+
+\subsubsection{Formalization}
+
+
+
+Samuelson suggested that a firm would react more to input price
+changes in the long-run than in the short-run because it has more
+inputs it can adjust. We take the ``short run'' to be the period when
+$k$ is effectively fixed, whereas the ``long run'' allows $k$ to
+vary. We can be more precise about this relationship, though.
+
+\begin{prop}[Milgrom and Roberts]
+  Suppose $X, Y = \R$ and define
+  \[
+  x(y, t) := \arg \max_{x \in X} F(x,y,t)
+  \]
+  and
+  \[
+  y(t) := \arg \max_{y \in Y} F(x(y, t), y, t)
+  \]
+  Suppose further that $F: X \times Y \times \R \to \R$ is
+  supermodular, that $t, t' \in \R $ with $t' \geq t$, and that the
+  maximizes described below are unique for parameter values $t$ and
+  $t'$. Then
+  \[
+  x(y(t'), t') \geq x(y(t), t') \geq x(y(t), t)
+  \]
+  and
+  \[
+  x(y(t'), t') \geq x(y(t'), t) \geq x(y(t), t)
+  \]
+\end{prop}
+
+The above may be useful to characterize long run response. For
+instance, if $x$ and $y$ happen to be complements, then the objective
+would be supermodular in $x$ and $y$ and the above would characterize
+growth paths.
+
+\begin{prop}[LeChatelier Principle]
+  If production is $f(k,l)$ and wage $w > w_0$ increases, and if $k$
+  and $l$ are always complements or always substitutes, then
+  \[
+  l_{LR}(w) \leq l_{SR}(w_0, w) \leq l_{LR}(w_0)
+  \]
+\end{prop}
+
+Note that when we have always complements or always substitutes, we
+get supermodularity, and we can apply Milgrom-Roberts, which gives the
+result.
+
+Note also that the above does not apply when we have sometimes complements
+and sometimes substitutes, which would likely be the case in many
+applications. For instance, perhaps capital is a complement to labor
+when labor is abundant but a substitute when labor is scarce.
+
+\message{ !name(monotone.tex) !offset(-351) }

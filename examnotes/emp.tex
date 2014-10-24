@@ -3,7 +3,7 @@
 \begin{definition}[EMP]
   The consumer's expenditure minimization problem (EMP) is
   \[
-  min_{x \in X} p \cdot x \quad s.t. \quad u(x) \geq u_0
+  \min_{x \in X} p \cdot x \quad s.t. \quad u(x) \geq u_0
   \]
 \end{definition}
 
@@ -137,3 +137,30 @@ unchanged?''
   - \underbrace{\frac{\partial x_i(p,w)}{\partial w} x_j(p,w)}_{\text{income effect}}
   \]
 \end{prop}
+
+\begin{proof}
+  From Shephard's Lemma/FOC on the EMP, $h_i(p,u) = \frac{\partial
+    e(p,u)}{\partial p_i}$. 
+
+
+  We know that $h_i(p,u) = x_i(p, e(p,u))$, so we can differentiate
+  wrt $p_j$ to get
+  \begin{align}
+    \frac{\partial h_i(p,u)}{\partial p_j}
+    & = \frac{\partial x_i(p, e(p,u))}{\partial p_j}
+    + \frac{\partial x_i(p,e(p,u))}{\partial e(p,u)}
+    \frac{\partial e(p,u)}{\partial p_j} & \notag \\
+    & = \frac{\partial x_i(p, e(p,u))}{\partial p_j}
+    + \frac{\partial x_i(p,e(p,u))}{\partial w}
+    \frac{\partial e(p,u)}{\partial p_j} & \notag \\
+    & = \frac{\partial x_i(p, e(p,u))}{\partial p_j}
+    + \frac{\partial x_i(p,e(p,u))}{\partial w}
+    h_j(p,u) & \text{by Shephard's Lemma} & \notag \\
+    & = \frac{\partial x_i(p, e(p,u))}{\partial p_j}
+    + \frac{\partial x_i(p,e(p,u))}{\partial w}
+    x_j(p,e(p,u)) & \notag \\
+    & = \frac{\partial x_i(p, w)}{\partial p_j}
+    + \frac{\partial x_i(p,w)}{\partial w}
+    x_j(p,w) & \notag
+  \end{align}
+\end{proof}

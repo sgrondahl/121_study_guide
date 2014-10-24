@@ -133,3 +133,25 @@ existence.
 \end{theorem}
 
 
+\subsection{Implicit Function Theorem}
+\label{sec:impl-funct-theor}
+
+\begin{definition}[Implicit Function Theorem]
+Let $W$ be an open neighborhood of $c \in \R^{n+m}$ and $F:W \to \R^N$
+be differentiable function with $F(c) = 0$ and $[DF(c)]$ onto (hence
+it has rank $n$). Arrange $[DF(c)]$ such that $n$ linearly independent
+columns come first (left), and similarly rearrange $c$ such that the
+entries correspond to the pivotal unknowns for the first $n$ entries
+followed by the next $m$ entries. Then there exists a unique
+continuously differentiable mapping $g$ from a neighborhood of $b$ to
+a neighborhood of $a$ that uniquely specifies the $n$ pivotal
+components as a function of the $m$ nonpivotal components. That is,
+\[
+g(b) = a \quad and \quad F(g(y), y) = 0 \quad \forall y \in B_r(b)
+\]
+and the derivative is given by
+\[
+[Dg(b)] = -[D_1F(c), \dots, D_nF(c)]^{-1}[D_{n+1}F(c), \dots, D_{n+m}F(c)]
+\]
+  
+\end{definition}

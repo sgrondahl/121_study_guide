@@ -166,6 +166,34 @@ endowment.
     \in I}$ is Pareto optimal.
 \end{theorem}
 
+\begin{proof}
+  Suppose we have a Walrasian equilibrium. Then at prices $p$ since
+  our consumers are optimizing, it must be the case that for some
+  other bundle than the Walrasian bundle,
+  \[
+  x^{i'} \succeq_i x^i \implies p \cdot x^{i'} \geq p \cdot x^i
+  \]
+  because otherwise $x^{i'}$ would be affordable and the agent would
+  have consumed it at prices $p$. We can make the same statement above
+  for strict inequalities. Now suppose we have a weak Pareto
+  improvement of new allocations $\{x^{i'}\}_{i \in I}$. Then for all
+  $i$, $x^{i'} \succeq_i x^i$ sith the preference strict for at least
+  one guy. But my the above inequality this means
+  \[
+  \sum p \cdot x^{i'} > \sum p \cdot x^i
+  \]
+  thus it must be the case that for some good $l$,
+  \[
+  \sum_i p_l x^{i'}_l > \sum_i p_l x^i_l
+  \]
+  and since prices are nonnegative
+  \[
+  \sum_i x^{i'}_l > \sum_i x^i_l
+  \]
+  which violates the resource constraint. So no Pareto improvement is
+  possible.
+\end{proof}
+
 This says that even without explicit coordination, decentralized
 markets where agents simply maximize their utilities given prices are
 efficient. However, it should be emphasized that the model has a
@@ -304,8 +332,8 @@ The consumer solves
 A Walrasian equilibrium in this economy is a price vector $(p^*, w^*)$
 at which both markets clear, i.e.
 \begin{align}
-x_2(p^8, w^*) &= q(p^*, w^*) & \text{consumption market clears} \notag \\
-z(p^*, w^*) = \bar L - x_1(p^*, w^*) & \text{labor market clears} \notag
+x_2(p^*, w^*) &= q(p^*, w^*) & \text{consumption market clears} \notag \\
+z(p^*, w^*) & = \bar L - x_1(p^*, w^*) & \text{labor market clears} \notag
 \end{align}
 
 

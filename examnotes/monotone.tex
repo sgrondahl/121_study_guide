@@ -12,7 +12,8 @@ we want to know both how the maximum value ($v$) and the maximizing
 argument ($x$) depend upon $\theta$. Assuming all derivatives exist
 and the solution is interior and unique (which we could get, e.g. if
 $f$ is ${\cal C}^2$, and strictly convex), we can apply the implicit
-function theorem since the maximizer uniquely solves
+function theorem (see section \ref{sec:impl-funct-theor} for a full
+definition of the IFT) since the maximizer uniquely solves
 \[
 f_x(x(\theta), \theta) = 0
 \]
@@ -28,6 +29,7 @@ introduces the idea of ``Robust Comparative Statics'' which seek to
 avoid calculus and find conditions which can be used even if functions
 are nondifferentiable, discontinuous, or even defined on discrete
 state spaces.
+
 
 \subsection{Preliminaries}
 \label{sec:preliminaries}
@@ -220,6 +222,104 @@ symmetric in the variables $(x, \theta)$.
 The usefulness of the Monotonic Selection theorem is that we can make
 a statement about comparative statics that is robust to arbitrarily
 selecting/restricting the feasible set $\bar X \subset X$.
+
+\subsection{Applications in Producer Theory}
+\label{sec:appl-prod-theory}
+
+\begin{prop}
+  Suppose a firm faces the cost minimization problem
+  \[
+  \max_{k \in K} -rk - wl \quad s.t. \quad F(k,l) \geq q
+  \]
+  then the optimal choice of capitak $k^*(r,w,q)$ is weakly decreasing
+  in $r$.
+\end{prop}
+
+\begin{prop}
+  Now suppose instead of prices, the firm is adjusting its capital in
+  response output $q$, but now required labor is a function of $k$ and
+  $q$
+  \[
+  \max_k -rk - wL(k,q)
+  \]
+  and $k^*(r,w,q)$ is weakly increasing in $q$ if $-L(k,q)$ has
+  increasing differences.
+\end{prop}
+
+This proposition is difficult to interpret. Note the $L$ is the
+function such that $F(k, L(k,q)) = q$. The core idea is that starting
+from a fixed level of capital, the amount of labor required to
+substitute for a small decreas in capital while holding output fixed
+increases as the desired level of output increases.
+
+Now we turn our attention to a much more interesting problem: cross
+price effects in the firm's profit maximization problem. In
+particular, we want to know what happens to $k$ as $w$ changes.
+
+\begin{definition}[Substitutes and Complements]
+  $k$ and $l$ are substitutes in production if $F(k,l)$ has decreasing
+  differences. $k$ and $l$ are complements in production if $F(k,l)$
+  has increasing differences.
+\end{definition}
+
+We now turn to a few common examples. In the case of twice
+continuously differentiable functions, we can evaluate the second
+derivative and check the sign directly.
+
+\textbf{CES Production Function.} In the case of a CES production function
+\[
+f(k,l) = (\alpha_1 k^\rho + \alpha_2 l^\rho)^{1/\rho}
+\]
+hence
+\[
+\frac{\partial f(k,l)}{\partial k \partial l}
+= \alpha_1k^{\rho-1}\alpha_2l^{\rho-1}(\frac{1}{\rho-1})
+\rho(\alpha_1k^\rho + \alpha_2l^\rho)^{1/\rho-2}
+\]
+which is $>0$ when $\rho < 1$, in which case we have complements,
+otherwise substitutes.
+
+\textbf{Cobb-Douglas Production Function.} In the case of Cobb-Douglas,
+\[
+f(k,l) = k^\alpha l^\beta
+\]
+hence
+\[
+\frac{\partial f(k,l)}{\partial k \partial l}
+= \alpha \beta k^{\alpha-1} l^{\beta-1}
+\]
+which is $> 0 $ for any $\alpha, \beta > 0$ hence we always have
+complements.
+
+\subsection{Solving for Compararive Statics in the Firm Problem}
+\label{sec:solv-comp-stat-firm}
+
+
+In general we follow one of two (identical procedures):
+
+\begin{enumerate}
+\item Solve for $\hat l(k,w)$ given $w$ at capital $k$ (holding $r$ constant)
+\item Plug in $\hat l$ and solve for $k^*(r,w)$ as a function of $r$ and $w$
+\item Plug $k^*$ back into $\hat l$ to get $l^*(r,w)$
+\end{enumerate}
+
+the alternative is we first solve for $\hat k$ and proceed in the same
+way (except exchanging the $k$ ane $l$ in all of the above steps).
+
+\begin{prop}[Cross-Price Effects]
+  \begin{enumerate}[(a)]
+  \item If $k$ and $l$ are complements, then $k^*(r,w)$ is weakly
+    decreasing in $w$ and $l^*(r,w)$ is weakly decreasing in $r$.
+  \item If $k$ and $l$ are substitutes, then $k^*(r,w)$ is weakly
+    increasing in $w$ and $l^*(r,w)$ is weakly increasing in $r$.
+  \end{enumerate}
+\end{prop}
+
+\subsubsection{An Example: Simple Cobb-Douglas}
+
+As a simple example, take Cobb-Douglas with $\alpha = 1, \beta =
+2$. This makes the calculations simple. Hence $f(k,l) = kl^2$.
+
 
 \subsection{Long Run versus Short Run Response}
 \label{sec:LR-SR}
